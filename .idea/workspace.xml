@@ -10,7 +10,7 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
-      <executable />
+      <executable path="composer" />
     </execution>
   </component>
   <component name="Git.Settings">
@@ -159,7 +159,7 @@
       <option name="presentableId" value="Default" />
       <updated>1579433770622</updated>
       <workItem from="1579433774752" duration="293000" />
-      <workItem from="1579434088786" duration="4318000" />
+      <workItem from="1579434088786" duration="6449000" />
     </task>
     <servers />
   </component>
@@ -180,6 +180,7 @@
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
+      <path value="$USER_HOME$/dedal" />
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
@@ -187,6 +188,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="736" y="324" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579436944939" />
+    <state x="1277" y="437" key="ComposerInitDialogKey" timestamp="1579443722648">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1277" y="437" key="ComposerInitDialogKey/0.0.1920.1040@0.0.1920.1040" timestamp="1579443722648" />
     <state x="1201" y="279" key="FileChooserDialogImpl" timestamp="1579436902310">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -199,14 +204,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1365" y="418" width="260" height="211" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579435336571" />
-    <state x="576" y="187" key="SettingsEditor" timestamp="1579437076935">
+    <state x="695" y="85" width="1225" height="874" key="SettingsEditor" timestamp="1579444086954">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="576" y="187" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579437076935" />
+    <state x="695" y="85" width="1225" height="874" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579444086954" />
     <state x="1075" y="259" key="Vcs.Push.Dialog.v2" timestamp="1579436747900">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1075" y="259" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579436747900" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579442957792">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579442957792" />
     <state x="661" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1579434090507">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

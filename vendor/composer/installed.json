@@ -1,5 +1,75 @@
 [
     {
+        "name": "barryvdh/laravel-debugbar",
+        "version": "v3.2.8",
+        "version_normalized": "3.2.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/barryvdh/laravel-debugbar.git",
+            "reference": "18208d64897ab732f6c04a19b319fe8f1d57a9c0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/18208d64897ab732f6c04a19b319fe8f1d57a9c0",
+            "reference": "18208d64897ab732f6c04a19b319fe8f1d57a9c0",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/routing": "^5.5|^6",
+            "illuminate/session": "^5.5|^6",
+            "illuminate/support": "^5.5|^6",
+            "maximebf/debugbar": "~1.15.0",
+            "php": ">=7.0",
+            "symfony/debug": "^3|^4",
+            "symfony/finder": "^3|^4"
+        },
+        "require-dev": {
+            "laravel/framework": "5.5.x"
+        },
+        "time": "2019-08-29T07:01:03+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.2-dev"
+            },
+            "laravel": {
+                "providers": [
+                    "Barryvdh\\Debugbar\\ServiceProvider"
+                ],
+                "aliases": {
+                    "Debugbar": "Barryvdh\\Debugbar\\Facade"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Barryvdh\\Debugbar\\": "src/"
+            },
+            "files": [
+                "src/helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Barry vd. Heuvel",
+                "email": "barryvdh@gmail.com"
+            }
+        ],
+        "description": "PHP Debugbar integration for Laravel",
+        "keywords": [
+            "debug",
+            "debugbar",
+            "laravel",
+            "profiler",
+            "webprofiler"
+        ]
+    },
+    {
         "name": "barryvdh/laravel-ide-helper",
         "version": "v2.6.6",
         "version_normalized": "2.6.6.0",
@@ -1264,17 +1334,17 @@
     },
     {
         "name": "filp/whoops",
-        "version": "2.7.0",
-        "version_normalized": "2.7.0.0",
+        "version": "2.7.1",
+        "version_normalized": "2.7.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/filp/whoops.git",
-            "reference": "4c97f814aa2f0dd4d5bedc89181c10ef12c004c5"
+            "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/filp/whoops/zipball/4c97f814aa2f0dd4d5bedc89181c10ef12c004c5",
-            "reference": "4c97f814aa2f0dd4d5bedc89181c10ef12c004c5",
+            "url": "https://api.github.com/repos/filp/whoops/zipball/fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
+            "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
             "shasum": ""
         },
         "require": {
@@ -1290,7 +1360,7 @@
             "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
             "whoops/soap": "Formats errors as SOAP responses"
         },
-        "time": "2019-12-29T10:00:00+00:00",
+        "time": "2020-01-15T10:00:00+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1589,17 +1659,17 @@
     },
     {
         "name": "laravel/framework",
-        "version": "v6.10.1",
-        "version_normalized": "6.10.1.0",
+        "version": "v6.11.0",
+        "version_normalized": "6.11.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/framework.git",
-            "reference": "fe45ad5bc89e5e1b08ab2c8687f9be01c9c84d14"
+            "reference": "17af23842c259edcfd8c5b9e6a7c86596e040034"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/fe45ad5bc89e5e1b08ab2c8687f9be01c9c84d14",
-            "reference": "fe45ad5bc89e5e1b08ab2c8687f9be01c9c84d14",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/17af23842c259edcfd8c5b9e6a7c86596e040034",
+            "reference": "17af23842c259edcfd8c5b9e6a7c86596e040034",
             "shasum": ""
         },
         "require": {
@@ -1702,7 +1772,7 @@
             "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^1.2).",
             "wildbit/swiftmailer-postmark": "Required to use Postmark mail driver (^3.0)."
         },
-        "time": "2020-01-08T21:17:42+00:00",
+        "time": "2020-01-14T15:12:09+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1738,17 +1808,17 @@
     },
     {
         "name": "laravel/tinker",
-        "version": "v2.0.0",
-        "version_normalized": "2.0.0.0",
+        "version": "v2.1.0",
+        "version_normalized": "2.1.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/tinker.git",
-            "reference": "6c2f1a1873180f3ecece0ba34ff9146847bf8dec"
+            "reference": "d8ce361f2fd979c03e5f66c79d4a95a1c1e68640"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/tinker/zipball/6c2f1a1873180f3ecece0ba34ff9146847bf8dec",
-            "reference": "6c2f1a1873180f3ecece0ba34ff9146847bf8dec",
+            "url": "https://api.github.com/repos/laravel/tinker/zipball/d8ce361f2fd979c03e5f66c79d4a95a1c1e68640",
+            "reference": "d8ce361f2fd979c03e5f66c79d4a95a1c1e68640",
             "shasum": ""
         },
         "require": {
@@ -1765,7 +1835,7 @@
         "suggest": {
             "illuminate/database": "The Illuminate Database package (^6.0|^7.0)."
         },
-        "time": "2019-11-26T17:57:28+00:00",
+        "time": "2020-01-14T16:58:39+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1803,17 +1873,17 @@
     },
     {
         "name": "league/commonmark",
-        "version": "1.2.0",
-        "version_normalized": "1.2.0.0",
+        "version": "1.2.2",
+        "version_normalized": "1.2.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/commonmark.git",
-            "reference": "2533c389fd2a7573d4f7be279b1c33cf941c8dfc"
+            "reference": "34cf4ddb3892c715ae785c880e6691d839cff88d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/2533c389fd2a7573d4f7be279b1c33cf941c8dfc",
-            "reference": "2533c389fd2a7573d4f7be279b1c33cf941c8dfc",
+            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/34cf4ddb3892c715ae785c880e6691d839cff88d",
+            "reference": "34cf4ddb3892c715ae785c880e6691d839cff88d",
             "shasum": ""
         },
         "require": {
@@ -1838,7 +1908,7 @@
         "suggest": {
             "league/commonmark-extras": "Library of useful extensions including smart punctuation"
         },
-        "time": "2020-01-09T22:41:09+00:00",
+        "time": "2020-01-16T01:18:13+00:00",
         "bin": [
             "bin/commonmark"
         ],
@@ -2028,6 +2098,69 @@
         ]
     },
     {
+        "name": "maximebf/debugbar",
+        "version": "v1.15.1",
+        "version_normalized": "1.15.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/maximebf/php-debugbar.git",
+            "reference": "6c4277f6117e4864966c9cb58fb835cee8c74a1e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/6c4277f6117e4864966c9cb58fb835cee8c74a1e",
+            "reference": "6c4277f6117e4864966c9cb58fb835cee8c74a1e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6",
+            "psr/log": "^1.0",
+            "symfony/var-dumper": "^2.6|^3|^4"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^5"
+        },
+        "suggest": {
+            "kriswallsmith/assetic": "The best way to manage assets",
+            "monolog/monolog": "Log using Monolog",
+            "predis/predis": "Redis storage"
+        },
+        "time": "2019-09-24T14:55:42+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.15-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "DebugBar\\": "src/DebugBar/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Maxime Bouroumeau-Fuseau",
+                "email": "maxime.bouroumeau@gmail.com",
+                "homepage": "http://maximebf.com"
+            },
+            {
+                "name": "Barry vd. Heuvel",
+                "email": "barryvdh@gmail.com"
+            }
+        ],
+        "description": "Debug bar in the browser for php application",
+        "homepage": "https://github.com/maximebf/php-debugbar",
+        "keywords": [
+            "debug",
+            "debugbar"
+        ]
+    },
+    {
         "name": "mockery/mockery",
         "version": "1.3.1",
         "version_normalized": "1.3.1.0",
@@ -2179,17 +2312,17 @@
     },
     {
         "name": "myclabs/deep-copy",
-        "version": "1.9.4",
-        "version_normalized": "1.9.4.0",
+        "version": "1.9.5",
+        "version_normalized": "1.9.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/myclabs/DeepCopy.git",
-            "reference": "579bb7356d91f9456ccd505f24ca8b667966a0a7"
+            "reference": "b2c28789e80a97badd14145fda39b545d83ca3ef"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/579bb7356d91f9456ccd505f24ca8b667966a0a7",
-            "reference": "579bb7356d91f9456ccd505f24ca8b667966a0a7",
+            "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/b2c28789e80a97badd14145fda39b545d83ca3ef",
+            "reference": "b2c28789e80a97badd14145fda39b545d83ca3ef",
             "shasum": ""
         },
         "require": {
@@ -2203,7 +2336,7 @@
             "doctrine/common": "^2.6",
             "phpunit/phpunit": "^7.1"
         },
-        "time": "2019-12-15T19:12:40+00:00",
+        "time": "2020-01-17T21:11:47+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
