@@ -34,9 +34,10 @@
                         $_SESSION['user']['role_id'] = app_get_role_id($user_id['data'])['data'];
                         $_SESSION['user']['director_id'] = get_director_id($_SESSION['user']['id'])['data'];
                         $_SESSION['user']['salt'] = long_uid();
+
                         $_SESSION['user']['UID'] = password_hash($_SESSION['user']['id'].$_SESSION['user']['salt'], PASSWORD_DEFAULT);
                         $_SESSION['user']['key'] = password_hash($_SESSION['user']['UID'], PASSWORD_DEFAULT);
-                        setcookie('UID',  $_SESSION['user']['UID'],  time()+60*60*24*30, '/', 'dedal-service.ru', false, true);
+                        setcookie('UID',  $_SESSION['user']['UID'], time()+60*60*24*30, '/', 'dedal-service.ru', false, true);
                         $response = ['error' => false, 'status' => 'success'];
                     }
                 }
@@ -48,6 +49,9 @@
         }
         get_role_policy();
         echo  json_encode($response);
+    }
+    function action_forgot_password(){
+        template_loader('forgot_password');
     }
     function action_logout(){
         $_SESSION['app']['logout'] = true;

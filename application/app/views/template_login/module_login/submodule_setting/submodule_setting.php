@@ -16,4 +16,12 @@
             <span class="text-left pseudo-link register-link">Зарегистрироваться</span>
         </p>
     </div>
+    <script>
+        $('.register-link').click(function (e) {
+            document.location.href = '/register';
+        })
+        $('.forgot-password-link').click(function (e) {
+            document.location.href = '/login/forgot_password';
+        })
+    </script>
 </div>

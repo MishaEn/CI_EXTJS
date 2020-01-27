@@ -44,7 +44,6 @@
                     login: {valid: valid_field(form.login.value, {type: 'string', min_length: '5', max_length: '15'}), field: form.login.field},
                     password: {valid: valid_field(form.password.value, {type: 'string', min_length: '5', max_length: '15'}), field: form.password.field}
                 };
-                console.log(valid_status.login.valid.error)
                 if(!valid_status.login.valid.error && !valid_status.password.valid.error){
                     let message = '';
                     $.ajax({
@@ -53,7 +52,6 @@
                         dataType: 'json',
                         data: {'login': form.login.value, 'password': form.password.value},
                         success: function (data) {
-                            console.log(data);
                             if(data.error){
                                 switch (data.status) {
                                     case 'valid fail':
@@ -93,9 +91,11 @@
                                 }
                             }
                             else{
-
-                                field_reaction(form.password.field, 'success', data.error);
-                                field_reaction(form.password.field, 'success', data.error);
+                                let status = {
+                                    login: {valid: {message: 'success', error: false}, field: form.login.field},
+                                    password: {valid: {message: 'success', error: false}, field: form.password.field}
+                                };
+                                form_reaction(status);
                                 document.location.href = '/app'
                             }
                         }

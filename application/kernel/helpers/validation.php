@@ -7,6 +7,33 @@
         else{
             $response = ['error' => false, 'status' => 'success'];
         }
+        if(!is_null($option)){
+            if(isset($option['type'])){
+
+            }
+            if(isset($option['min_length'])){
+                if(strlen($field) < $option['min_length']){
+                    printable($field);
+                    printable($option['min_length']);
+                    $response = ['error' => true, 'status' => 'min length error'];
+                }
+                else{
+                    $response = ['error' => false, 'status' => 'success'];
+                }
+            }
+            if(isset($option['max_length'])){
+                if(strlen($field) > $option['max_length']){
+                    $response = ['error' => true, 'status' => 'max length error'];
+                }
+                else{
+                    $response = ['error' => false, 'status' => 'success'];
+                }
+            }
+            if(isset($option['regexp'])){
+
+            }
+        }
+
         return $response;
     }
 
