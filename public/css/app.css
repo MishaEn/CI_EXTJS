@@ -1,0 +1,212 @@
+.info:hover{
+    margin-left: 10px;
+    border-radius: 4px;
+    padding-right: 10px;
+    background: #dc3545;
+
+}
+.info a:hover{
+    color: #ffffff;!important;
+}
+.custom-logo{
+    padding: 0;
+}
+.company-table{
+    height: 680px;
+    overflow: scroll;
+}
+body{
+    z-index: -2;!important;
+    background-image: url("/public/img/Kitchen00500012.jpg");!important;
+    background-size: cover;
+}
+
+.form-control:focus{
+    border-color: #dc3545;
+}
+.input-group-text:focus{
+    border-color: #dc3545;
+}
+.submit{
+    background: #dc3545;
+    border-color: #dc3545;
+}
+
+.submit:hover{
+    background: #cb3140;
+    border-color: #cb3140;
+}
+.submit button:active{
+    background: #cb3140; !important;
+    border-color: #cb3140; !important;
+}
+
+.register-box{
+    width: 600px;!important;
+}
+
+.login-box{
+    z-index: 20;!important;
+}
+.login-card-body a{
+    color: #dc3545;
+}
+
+.login-card-body a:hover{
+    color: #c31409;
+}
+
+#remember:hover{
+    color: #c31409;
+}
+
+.login-settings{
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.back-to-login{
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.dropdown-settings{
+    z-index: 0; !important;
+    position: relative;
+    display: none;
+    top: -302px;
+    left: 355px;
+}
+
+@media (max-width: 800px) {
+    .dropdown-settings{
+        z-index: 21;
+        position: relative;
+        display: none;
+        top: -215px;
+        left: 80px;
+    }
+}
+
+.placeholder-color::placeholder{
+    color: #dc3545;
+    text-decoration: underline;
+}
+
+.pseudo-link{
+    cursor: pointer;
+  /*  color: #dc3545;*/
+    color: rgb(0, 123, 255);
+}
+
+.pseudo-link:hover{
+    font-weight: 500;
+    transition: font-size 3s;
+/*    color: #c31409;*/
+    color: #0056b3;
+}
+
+.link-red{
+    color: #dc3545;
+}
+.link-red:hover{
+    color: #cb3140;
+}
+
+
+.page-item.active .link-red{
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+active .link-red:hover{
+    color: #fff;
+}
+
+.card-tabs{
+    padding: 0;
+}
+
+.tab-button{
+    font-size: 16px;
+    padding: 5px;
+    background: #e8e8e8;
+}
+
+.tab-active{
+    background: #dc3545;
+    color: #fff;
+}
+.tabs-button{
+    padding: 0 7px;
+}
+
+.tabs-button .col-4{
+    padding: 0;
+}
+
+.tab-content{
+    padding: 10px;
+    border-radius: 0 0 5px;
+    border-bottom: 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+}
+
+.drop-menu{
+    list-style: none;
+    border: 1px solid #dee2e6;
+    padding: 0;
+    background: #fff;
+}
+
+.drop-menu>li{
+    padding: 10px 15px;
+}
+.drop-menu>li:hover{
+    background: #ececec;
+}
+
+.input-group-text{
+    background: #fff;
+    border-left: none;
+}
+
+.tab-content{
+    border: none;!important;
+}
+
+.card-danger .card-outline{
+    border-top: none !important;
+}
+.settings-tab{
+    background: rgba(0,0,0,0) !important;
+}
+
+.tab-btn{
+    display: inline;
+    z-index: 1200;
+}
+
+.tab-btn-dis{
+    display: inline;
+    z-index: 1199;
+}
+
+.tab-btn span{
+    padding: 10px; border: 1px solid #d9dadd; border-bottom: none; border-top: 3px solid #dc3545; border-radius: 4px 4px 0 0; background: #fff;
+}
+
+.tab-btn-dis span{
+    padding: 10px; border: 1px solid #d9dadd; border-bottom: none; border-top: 3px solid #d6caca; border-radius: 4px 4px 0 0; background: #fff; cursor: pointer;
+}
+
+.tab-btn-dis span:hover{
+    background: #eeeeee;
+}
+
+.folder-hover:hover{
+    background: #ebebeb;
+}
