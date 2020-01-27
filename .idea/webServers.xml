@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9915052c-6154-48bf-8e9e-2aafea2e31ae" name="dev.dedal" url="http://92.53.118.144">
+        <fileTransfer host="92.53.118.144" port="21" rootFolder="/dev.dedal-service/public_html">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
