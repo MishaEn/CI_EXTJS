@@ -1,4 +1,4 @@
 <?php
     function action_index(){
-        submodule_loader('shop');
+        submodule_loader('shop', null);
     }

@@ -55,11 +55,17 @@
                                         <td class="" style="border: 1px solid #dee2e6"><?php echo $item['comment'];?></td>
                                         <?php switch($item['status']):
                                             case 0:?>
-                                                <td class="text-center" style="border: 1px solid #dee2e6; background: #dc3545; color: #fff; font-weight: 700;">Не активирован</td>
+                                                <td class="text-center" style="border: 1px solid #dee2e6; background: #fd7e14; color: #fff; font-weight: 700;">Не активирован</td>
                                                 <?php break; case 1:?>
                                                 <td class="text-center" style="border: 1px solid #dee2e6; background: #28a745; color: #fff; font-weight: 700;">Активирован</td>
                                                 <?php break; case 2:?>
                                                 <td class="text-center" style="border: 1px solid #dee2e6; background: #6c757d; color: #fff; font-weight: 700;">Заблокирован</td>
+                                                <?php break; case 3:?>
+                                                <td class="text-center" style="border: 1px solid #dee2e6; background: #DC3545; color: #fff; font-weight: 700;">Запрос на удаление</td>
+                                                <?php break; case 4:?>
+                                                <td class="text-center" style="border: 1px solid #dee2e6; background: #6c757d; color: #fff; font-weight: 700;">Запрос на бокировку</td>
+                                                <?php break; case 5:?>
+                                                <td class="text-center" style="border: 1px solid #dee2e6; background: #6c757d; color: #fff; font-weight: 700;">Модерация</td>
                                                 <?php break; endswitch;?>
                                         <td style="border: 1px solid #dee2e6" class="text-center">
                                             <i style="color: #2d2e2c; font-size: 18px; cursor: pointer" data-toggle="close" class="fa fa-cog director-settings"></i><input type="text" value="<?php echo $item['id'];?>" hidden>

@@ -42,7 +42,7 @@
     </div>
     <div class="row">
         <div class="col-8">
-            <?php submodule_loader('setting');?>
+            <?php submodule_loader('setting', null);?>
         </div>
     </div>
 </div>

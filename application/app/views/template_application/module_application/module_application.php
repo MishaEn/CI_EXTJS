@@ -12,9 +12,9 @@
         </div>
     </section>
     <section class="content">
-        <!--<div class="preloader-holder"  style="z-index: 1501; background: #0b2e13; width: 100%; height: 100%">
+<!--        <div class="preloader-holder"  style="z-index: 1501; left: 50%; top: 50%; position: absolute; background: rgba(255,40,49,0)">
             <div style="z-index: 1500" class="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-        </div>-->
+        </div>
         <style>
             .preloader {
                 /* size */
@@ -303,13 +303,12 @@
                 }
             }
 
-        </style>
+        </style>-->
         <div class="modal-holder"></div>
     </section>
     <script>
         $(document).ready(function (e) {
             let module_name = $('.module-loader-button[data-status="active"]').attr('data-module-name');
-            console.log(module_name);
             $.ajax({
                 url: '/company',
                 method: 'post',
@@ -318,7 +317,66 @@
                     $('.submodule').remove();
                     $('.content').append(data);
                 }
-            })
+            });
+            $(document).on('input', '.filter-input', function (e) {
+                let input = e.target;
+                let sort_type = $('.filter-type').val();
+                let head_row_list = $('table thead tr');
+                let body_row_list = $('table tbody tr');
+                let head_column_list = head_row_list.children();
+                let body_column_list = body_row_list.children();
+                let paginate_button = $('.index-button');
+                let show_count = 0;
+                let column_number = 0;
+                /*$.each(paginate_button, function (key, item) {
+                    $(item).show();
+                });*/
+                $.each(head_column_list, function (key, item) {
+                    if($(item).children().children().children().text() === sort_type){
+                        column_number = key;
+                    }
+                });
+                $.each(body_row_list, function (key, item) {
+                    let value;
+                    if($(item.children[column_number]).children().hasClass('pseudo-link')){
+                        value = $(item.children[column_number]).children().text().trim();
+                    }
+                    else{
+                        value = $(item.children[column_number]).text().trim();
+                    }
+                    if($(input).val() !== ''){
+                        if(value.includes($(input).val())){
+                            show_count++;
+                            $(item).addClass('show');
+                            $(item).show();
+                        }
+                        else{
+                            $(item).removeClass('show');
+                            $(item).hide();
+                        }
+                    }
+                    else{
+                        $(item).addClass('show');
+                        $(item).show();
+                    }
+
+
+                });
+                let button_count = Math.ceil(show_count/10);
+                $.each(paginate_button, function (key, item) {
+                    if(button_count===0){
+                        $(item).show();
+                    }
+                    else{
+                        if($(item).attr('data-dt-idx')>button_count){
+                            $(item).hide();
+                        }
+                        else{
+                            $(item).show();
+                        }
+                    }
+                });
+            });
         })
     </script>
 </div>

@@ -7,6 +7,10 @@
         <li class="nav-item">
             <a class="nav-link" href="https://dedal-service.ru/">На основной сайт</a>
         </li>
+        <li class="nav-item">
+           <span style="color:  rgb(0, 123, 255)" class="pseudo-link nav-link help">Помощь</span>
+        </li>
+
     </ul>
     <ul class="navbar-nav ml-auto">
         <!--todo: Сообщения-->

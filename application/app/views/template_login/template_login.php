@@ -27,7 +27,9 @@
         <?php module_loader('login');?>
     </div>
     <script>
+        let app_handler = $('.handler');
         $(document).ready(function (e) {
+
             let login = $('.wrapper');
             login.on('click', '.submit-login',    function (event) {
                 event.preventDefault();

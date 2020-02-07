@@ -39,7 +39,7 @@
     <!-- todo: логотип в sidebar -->
     <div class="logo" style="background: #dc3545; padding: 11px 11px 11px 35px;">
         <a href="/" class="custom-logo">
-            <img src="/public/img/top_logo.png"
+            <img src="/public/img/top_logo.webp"
                  class="custom-logo"
                  alt="AdminLTE Logo"
             >
@@ -51,7 +51,7 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="/public/img/user2-160x160.jpg" class="img-bordered-sm elevation-1" alt="User Image">
+                <img src="/public/img/user2-160x160.webp" class="img-bordered-sm elevation-1" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">
@@ -72,7 +72,7 @@
                     foreach($module as $key => $item){
                         if(array_key_exists($item['name'], $_SESSION['app']['role_policy'])){
                             if(!check_role_policy($item['name'], 'read')['error']){
-                                submodule_loader('item', $item);
+                                submodule_loader('item', null, $item);
                             }
                         }
                     }
@@ -91,8 +91,15 @@
         </nav>
     </div>
     <script>
+
         $(document).on('click', '.module-loader-button', function (e) {
             e.preventDefault();
+            let max_id;
+
+            max_id = setTimeout(function () {});
+            while (max_id--) {
+                clearTimeout(max_id);
+            }
             let button;
             if ($(e.target).hasClass('module-loader-button')){
                 button = $(e.target);
@@ -125,6 +132,7 @@
                         });
 
                         $('.submodule').fadeOut(300, function () {
+                            $(this).unbind();
                             $(this).remove();
                             $('.content').append(data);
                             $('.submodule').fadeIn(300);

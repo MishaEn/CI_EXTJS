@@ -1,4 +1,5 @@
 <?php
+
     /*TODO:Сборка ядра*/
     function build_kernel(){
         session_start();

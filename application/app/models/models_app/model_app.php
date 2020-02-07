@@ -129,3 +129,52 @@
         }
         return $response;
     }
+    function get_director_status($id){
+        $pdo = get_pdo();
+        $stm = $pdo->prepare('SELECT status FROM users WHERE id = :id');
+        $stm->bindValue(':id', $id);
+        if($stm->execute()){
+            $data = $stm->fetch();
+            if(empty($data)){
+                $response = ['error' => true, 'status' => 'fetch error'];
+            }
+            else{
+                $response = ['error' => false, 'status' => 'success','data' => $data['status']];
+            }
+        }
+        else{
+            $response = ['error' => true, 'status' => 'execute error'];
+        }
+        return $response;
+    }
+    function app_check_email($email){
+        $pdo = get_pdo();
+        $stm = $pdo->prepare('SELECT id FROM users WHERE email = :email');
+        $stm->bindValue(':email', $email);
+        if($stm->execute()){
+            $data = $stm->fetch();
+            if(empty($data)){
+                $response = ['error' => true, 'status' => 'not exist'];
+            }
+            else{
+                $response = ['error' => false, 'status' => 'success'];
+            }
+        }
+        else{
+            $response = ['error' => true, 'status' => 'execute error'];
+        }
+        return $response;
+    }
+
+    function app_update_password($password, $email){
+        $pdo = get_pdo();
+        $stm = $pdo->prepare('UPDATE `users` SET `password`=:password WHERE email = :address');
+        $stm->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
+        $stm->bindValue(':address', $email);
+        if ($stm->execute()) {
+            $response = ['error' => false, 'status' => 'success'];
+        } else {
+            $response = ['error' => true, 'status' => 'execute error'];
+        }
+        return $response;
+    }

@@ -22,13 +22,24 @@
     }
 
 
-    function submodule_loader($submodule_name, $data = null){
-        if(file_exists(TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$submodule_name.'/submodule_'.$submodule_name.'.php')){
-            $_SESSION['app']['submodule_name'] = $submodule_name;
-            include TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$submodule_name.'/submodule_'.$submodule_name.'.php';
+    function submodule_loader($submodule_name, $folder = null, $data = null){
+        if(is_null($folder)){
+            if(file_exists(TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$submodule_name.'/submodule_'.$submodule_name.'.php')){
+                $_SESSION['app']['submodule_name'] = $submodule_name;
+                include TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$submodule_name.'/submodule_'.$submodule_name.'.php';
+            }
+            else{
+                return;
+            }
         }
         else{
-            return;
+            if(file_exists(TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$folder.'/submodule_'.$submodule_name.'.php')){
+                $_SESSION['app']['submodule_name'] = $submodule_name;
+                include TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$folder.'/submodule_'.$submodule_name.'.php';
+            }
+            else{
+                return;
+            }
         }
     }
     function element_loader($element_name, $data = null){

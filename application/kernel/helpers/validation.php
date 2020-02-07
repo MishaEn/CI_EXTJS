@@ -13,8 +13,6 @@
             }
             if(isset($option['min_length'])){
                 if(strlen($field) < $option['min_length']){
-                    printable($field);
-                    printable($option['min_length']);
                     $response = ['error' => true, 'status' => 'min length error'];
                 }
                 else{
@@ -33,7 +31,6 @@
 
             }
         }
-
         return $response;
     }
 

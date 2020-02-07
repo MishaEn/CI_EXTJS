@@ -5,3 +5,6 @@
 .idea/dataSources/cfb1e87d-a394-442b-8300-b941ff499c97.xml
 /dedal/
 /.idea/
+.idea/deployment.xml
+.idea/workspace.xml
+/.idea/

@@ -1,4 +1,4 @@
 <?php
 function action_index(){
-    submodule_loader('information');
+    submodule_loader('information', null);
 }

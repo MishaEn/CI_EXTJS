@@ -1,23 +1,31 @@
 <?php
 function status_translate($str){
-    $response = '';
+    $text = '';
+    $color = '#fff';
+    $response = [];
     switch ($str){
         case 'default':
-            $response = 'Поступил';
+            $text = 'Поступил';
+            $color = '#dc3545';
             break;
         case 'work':
-            $response = 'Изготавливается';
+            $text = 'Изготавливается';
+            $color = '#ffc107';
             break;
         case 'confirm':
-            $response = 'Готов';
+            $text = 'Готов';
+            $color = '#007bff';
             break;
         case 'out':
-            $response = 'Отгрузили';
+            $text = 'Отгрузили';
+            $color = '#28a745';
             break;
         case 'wait':
-            $response = 'Задержка';
+            $text = 'Задержка';
+            $color = '#6c757d';
             break;
     }
+    $response = ['text' => $text, 'color' => $color];
     return $response;
 }
 function get_status_title(){
@@ -30,67 +38,65 @@ function get_status_title(){
         ';
 }
 ?>
-<?php if($_SESSION['user']['role_id'] == 2):?>
-    <div class="submodule order" data-status="disabled" data-submoudle-appliaction = "order">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <!--<div class="col-2">
-                        <button class="btn btn-block submit create-employee btn-primary btn-block">Добавить</button>
-                    </div>-->
-                    <div class="col-10">
-                        <div class="row">
-                            <div class="col-4 text-right">
-                                <span class="align-middle">Фильтровать по:</span>
+<div class="submodule order" data-status="disabled" data-submoudle-appliaction = "order">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <!--<div class="col-2">
+                    <button class="btn btn-block submit create-employee btn-primary btn-block">Добавить</button>
+                </div>-->
+                <div class="col-10 offset-2">
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <span class="align-middle">Фильтровать по:</span>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group mb-3">
+                                <select class="custom-select filter-type">
+                                    <option value="№ заказа отправителя">Номеру заказа отправителя</option>
+                                    <option value="№ заказа 3cad">Номеру заказа 3cad</option>
+                                    <option value="Дата принятия">Дате принятия</option>
+                                    <option value="Статус">Статусу</option>
+                                    <option value="Неделя">Неделе</option>
+                                    <option value="Дата отгрузки">Дате отгрузки</option>
+                                    <option value="Коду пользователя">Код пользователя</option>
+                                </select>
                             </div>
-                            <div class="col-2">
-                                <div class="input-group mb-3">
-                                    <select class="custom-select filter-type">
-                                        <option value="№ заказа отправителя">Номеру заказа отправителя</option>
-                                        <option value="№ заказа 3cad">Номеру заказа 3cad</option>
-                                        <option value="Дата принятия">Дате принятия</option>
-                                        <option value="Статус">Статусу</option>
-                                        <option value="Неделя">Неделе</option>
-                                        <option value="Дата отгрузки">Дате отгрузки</option>
-                                        <option value="Коду пользователя">Код пользователя</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <input type="text" class="form-control filter-input" data-placeholder ="Значение фильтра"  placeholder="Значение фильтра">
-                            </div>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control filter-input" data-placeholder ="Значение фильтра"  placeholder="Значение фильтра">
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body company-card" style="height: 65vh;!important; overflow-y: scroll; overflow-x: hidden">
+            </div>
+<?php if($_SESSION['user']['role_id'] == 2):?>
+        <div class="card">
+                    <div class="card-body company-card" style="height: 71vh;!important; overflow-y: scroll; overflow-x: hidden">
                         <?php if(!$data['error']):?>
                             <table class="table table-borderless table-hover">
                                 <thead>
                                 <tr style="font-size: 0.9em;">
-                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>№ заказа отправителя</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>№ заказа 3cad</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Дата принятия</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-4"><span>Статус</span></div><div class="col-1"><i style="color: #dc3545" title="<?php echo get_status_title();?>" class="fas fa-question-circle"></i></div><div class="col-1 offset-6 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Неделя</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Дата отгрузки</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Спецификация</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Код пользователя</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>№ заказа отправителя</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="№ заказа отправителя" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>№ заказа 3cad</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="№ заказа 3cad" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Дата принятия</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="Дата принятия" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-4"><span>Статус</span></div><div class="col-1"><i style="color: #dc3545" title="<?php echo get_status_title();?>" class="fas fa-question-circle"></i></div><div class="col-1 offset-6 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="Статус" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Неделя</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="Неделя" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Дата отгрузки</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="Дата отгрузки" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Спецификация</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="Спецификация" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
                                 <?php for ($i = 1; $i<= 1; $i++):?>
                                     <?php foreach($data['data'] as $item):?>
-                                        <tr class="show">
+                                        <tr class="show text-center">
                                             <td  style="border: 1px solid #dee2e6"><?php echo $item['n_order_se'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
                                             <td  style="border: 1px solid #dee2e6"><?php echo $item['n_order_ne'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
                                             <td  style="border: 1px solid #dee2e6"><?php echo $item['n_date_con'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
-                                            <td  style="border: 1px solid #dee2e6"><?php echo status_translate($item['n_status']);?> <input type="text" value="<?php echo $item['id'];?>" hidden></td>
+                                            <td class="text-center" style="font-weight: 700; border: 1px solid #dee2e6; color: #fff!important; background: <?php echo status_translate($item['n_status'])['color'];?>"><?php echo status_translate($item['n_status'])['text'];?> <input type="text" value="<?php echo $item['id'];?>" hidden></td>
                                             <td  style="border: 1px solid #dee2e6"><?php echo $item['n_week'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
                                             <td  style="border: 1px solid #dee2e6"><?php echo $item['n_mount'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
                                             <td class="text-center" style="border: 1px solid #dee2e6;"><a style="color: #dc3545; font-size: 1.5em" target="_blank" href="<?php echo '/public/pdf/orders/'.$item['n_code_ord'].'_'.$item['n_order_ne'].'.pdf';?>"><i class="fas fa-file-pdf"></i></a><input type="text" value="<?php echo $item['id'];?>" hidden></td>
-                                            <td  style="border: 1px solid #dee2e6"><span data-modal = "user" class="pseudo-link"><?php echo $item['code'];?></span><input type="text" value="<?php echo $item['id'];?>" hidden></td>
                                             <td hidden>
                                                 <input type="text" value="<?php echo $item['id'];?>" hidden>
                                             </td>
@@ -100,7 +106,7 @@ function get_status_title(){
                                 </tbody>
                             </table>
                         <?php else:?>
-                            <h1>Список компаний пуст. Добавьте новую компанию.</h1>
+                            <h1>Список заказов пуст.</h1>
                         <?php endif;?>
 
                     </div>
@@ -108,13 +114,57 @@ function get_status_title(){
 
                     </div>
                 </div>
-            </div>
         </div>
 <?php else:?>
-    <div class="submodule order" data-status="disabled" data-submoudle-appliaction = "order">
-        <h1>Заказы</h1>
+        <div class="card">
+            <div class="card-body company-card" style="height: 65vh;!important; overflow-y: scroll; overflow-x: hidden">
+                <?php if(!$data['error']):?>
+                    <table class="table table-borderless table-hover">
+                        <thead>
+                        <tr style="font-size: 0.9em;">
+                            <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>№ заказа отправителя</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                            <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>№ заказа 3cad</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                            <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Дата принятия</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                            <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-4"><span>Статус</span></div><div class="col-1"><i style="color: #dc3545" title="<?php echo get_status_title();?>" class="fas fa-question-circle"></i></div><div class="col-1 offset-6 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                            <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Неделя</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                            <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Дата отгрузки</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                            <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Спецификация</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                            <th class="col-1" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Код пользователя</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <?php for ($i = 1; $i<= 1; $i++):?>
+                            <?php foreach($data['data'] as $item):?>
+                                <tr class="show">
+                                    <td  style="border: 1px solid #dee2e6"><?php echo $item['n_order_se'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
+                                    <td  style="border: 1px solid #dee2e6"><?php echo $item['n_order_ne'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
+                                    <td  style="border: 1px solid #dee2e6"><?php echo $item['n_date_con'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
+                                    <td  style="border: 1px solid #dee2e6"><?php echo status_translate($item['n_status']);?> <input type="text" value="<?php echo $item['id'];?>" hidden></td>
+                                    <td  style="border: 1px solid #dee2e6"><?php echo $item['n_week'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
+                                    <td  style="border: 1px solid #dee2e6"><?php echo $item['n_mount'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
+                                    <td class="text-center" style="border: 1px solid #dee2e6;"><a style="color: #dc3545; font-size: 1.5em" target="_blank" href="<?php echo '/public/pdf/orders/'.$item['n_code_ord'].'_'.$item['n_order_ne'].'.pdf';?>"><i class="fas fa-file-pdf"></i></a><input type="text" value="<?php echo $item['id'];?>" hidden></td>
+                                    <td  style="border: 1px solid #dee2e6"><span data-modal = "user" class="pseudo-link"><?php echo $item['code'];?></span><input type="text" value="<?php echo $item['id'];?>" hidden></td>
+                                    <td hidden>
+                                        <input type="text" value="<?php echo $item['id'];?>" hidden>
+                                    </td>
+                                </tr>
+                            <?php endforeach;?>
+                        <?php endfor;?>
+                        </tbody>
+                    </table>
+                <?php else:?>
+                    <h1>Список компаний пуст. Добавьте новую компанию.</h1>
+                <?php endif;?>
+
+            </div>
+            <div class="card-footer clearfix">
+
+            </div>
+        </div>
 <?php endif;?>
-        <script>
+    </div>
+    <script>
     $(document).ready(function () {
 
         let row_list = $('.card-body table tbody tr');
@@ -148,7 +198,6 @@ function get_status_title(){
 
             }
         });
-        company_handler.on('click', '.pseudo-link', modal_link_handler);
         company_handler.on('click', '.index-button', function (event) {
             let prev_button = $('.previous');
             let next_button = $('.next');
@@ -493,92 +542,57 @@ function get_status_title(){
         });
         company_handler.on('click', '.sort-button', function (e) {
             let icon = $(e.target);
-            let sort_type = icon.parent().prev().text();
+            let sort_type = icon.attr('data-type');
             let head_row_list = $('table thead tr');
             let body_row_list = $('table tbody tr');
             let head_column_list = head_row_list.children();
             let body_column_list = body_row_list.children();
             let column_number = 0;
-            $.each(head_column_list, function (key, item) {
-                if($(item).children().children().children().text() === sort_type){
-                    column_number = key;
-                }
-            });
+            let direction;
+
             if(!icon.hasClass('asc') && !$(e.target).hasClass('desc')){
                 icon.removeClass('fa-times').addClass('fa-chevron-up').addClass('asc');
+                direction = 1;
             }
             else{
                 if(icon.hasClass('asc')){
                     icon.removeClass('fa-chevron-up').addClass('fa-chevron-down').removeClass('asc').addClass('desc');
+                    direction = 2;
                 }
                 else if(icon.hasClass('desc')){
-                    icon.removeClass('fa-chevron-down').removeClass('desc').addClass('fa-times');
+                    icon.removeClass('fa-chevron-down').addClass('fa-chevron-up').removeClass('desc').addClass('asc');
+                    direction = 1;
                 }
             }
-        });
-        company_handler.on('input', '.filter-input', function (e) {
-            let input = e.target;
-            let sort_type = $('.filter-type').val();
-            let head_row_list = $('table thead tr');
-            let body_row_list = $('table tbody tr');
-            let head_column_list = head_row_list.children();
-            let body_column_list = body_row_list.children();
-            let paginate_button = $('.index-button');
-            let show_count = 0;
-            let column_number = 0;
-            console.log(sort_type+' '+head_row_list+' '+body_row_list+' '+head_column_list+' '+body_column_list+' '+paginate_button)
-            /*$.each(paginate_button, function (key, item) {
-                $(item).show();
-            });*/
+
             $.each(head_column_list, function (key, item) {
-                if($(item).children().children().children().text() === sort_type){
+                if($($(item).children().children().children()[0]).text() === sort_type){
                     column_number = key;
                 }
             });
-            $.each(body_row_list, function (key, item) {
-                let value;
-                if($(item.children[column_number]).children().hasClass('pseudo-link')){
-                    value = $(item.children[column_number]).children().text().trim();
-                }
-                else{
-                    value = $(item.children[column_number]).text().trim();
-                }
-                if($(input).val() !== ''){
-                    if(value.includes($(input).val())){
-                        show_count++;
-                        $(item).addClass('show');
-                        $(item).show();
+            for(let i=0; i<body_row_list.length; i++){
+                for(let j=0; j<body_row_list.length; j++){
+                    if(direction === 1) {
+                        if($($($(body_row_list)[i]).children()[column_number]).text() > $($($(body_row_list)[j]).children()[column_number]).text()){
+                            $($(body_row_list)[j]).after($(body_row_list)[i]);
+                            console.log(body_row_list)
+                        }
                     }
-                    else{
-                        $(item).removeClass('show');
-                        $(item).hide();
+                    else if(direction === 2){
+                        if($($($(body_row_list)[i]).children()[column_number]).text() < $($($(body_row_list)[j]).children()[column_number]).text()){
+                            $($(body_row_list)[j]).before($(body_row_list)[i]);
+                        }
                     }
                 }
-                else{
-                    $(item).addClass('show');
-                    $(item).show();
-                }
+            }
 
-
-            });
-            let button_count = Math.ceil(show_count/10);
-            $.each(paginate_button, function (key, item) {
-                if(button_count===0){
-                    $(item).show();
-                }
-                else{
-                    if($(item).attr('data-dt-idx')>button_count){
-                        $(item).hide();
-                    }
-                    else{
-                        $(item).show();
-                    }
-                }
-            });
         });
+
+
+
         company_handler.on('change', '.filter-type', function (e) {
             $('.filter-input').val('')
         })
     })
 </script>
-    </div>
+</div>
