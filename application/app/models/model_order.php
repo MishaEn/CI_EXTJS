@@ -169,10 +169,10 @@
 
     function refresh_order(){
         $charset = 'utf8';
-        $host = 'localhost';
-        $db = 'cl279370_nwdedal';
+        $host = '';
+        $db = '';
         $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-        $pdo = new PDO("mysql:host=$host;dbname=$db;charset=$charset", 'cl279370_nwdedal', 'dedalhost1', [
+        $pdo = new PDO("mysql:host=$host;dbname=$db;charset=$charset", '', '', [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES   => false,
@@ -183,9 +183,9 @@
         $stm = $pdo->prepare($sql);
         if($stm->execute()){
             $data =  $stm->fetchAll();
-            $db = 'cl279370_admpnl';
+            $db = '';
             $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-            $pdo2 = new PDO("mysql:host=$host;dbname=$db;charset=$charset", 'cl279370_admpnl', 'GzBR8KeJ', [
+            $pdo2 = new PDO("mysql:host=$host;dbname=$db;charset=$charset", '', '', [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES   => false,
