@@ -60,10 +60,10 @@
     define('ROOTMODELS', __DIR__.'/application/app/models');
     define('ROOTVIEWS', __DIR__.'/application/app/views');
     define('ROOTPUBLIC', __DIR__.'/public');
-    $ip = ['127.1.1.1', '92.38.11.252', '178.76.229.90', '193.111.3.246'];
+    /*$ip = ['127.1.1.1', '92.38.11.252', '178.76.229.90', '193.111.3.246'];
     if(!in_array($_SERVER['REMOTE_ADDR'], $ip)){
         header('Location: http://dedal-service.ru');
-    }
+    }*/
 
 
 
