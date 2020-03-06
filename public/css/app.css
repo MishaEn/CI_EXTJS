@@ -1,3 +1,12 @@
+
+body{
+    font-family:  'Source Sans Pro Regular Italic', sans-serif;
+}
+
+.filter-option-item:hover{
+    background: #ccc;
+}
+
 .info:hover{
     margin-left: 10px;
     border-radius: 4px;
@@ -5,6 +14,20 @@
     background: #dc3545;
 
 }
+.row-description{
+    cursor: pointer;
+    margin-top: 10px;
+}
+.row-description input{
+    padding-left: 10px!important;
+    border-radius: 4px;
+  background: #f9ffdf;
+}
+.row-description:hover{
+    border-radius: 4px;
+    background: #eeeeee;
+}
+
 .info a:hover{
     color: #ffffff;!important;
 }
@@ -17,7 +40,7 @@
 }
 body{
     z-index: -2;!important;
-    background-image: url("/public/img/Kitchen00500012.jpg");!important;
+    background-image: url("/public/img/Kitchen00500012.webp");!important;
     background-size: cover;
 }
 
@@ -92,13 +115,34 @@ body{
 
 .placeholder-color::placeholder{
     color: #dc3545;
-    text-decoration: underline;
 }
 
 .pseudo-link{
     cursor: pointer;
   /*  color: #dc3545;*/
     color: rgb(0, 123, 255);
+}
+
+.status-company{
+    font-weight: 700!important;
+    text-shadow:
+
+            -0   -1px 0   rgba( 0, 0, 0, 0.1 ),
+            0   -1px 0   rgba( 0, 0, 0, 0.1 ),
+            -0    1px 0   rgba( 0, 0, 0, 0.1 ),
+            0    1px 0   rgba( 0, 0, 0, 0.1 ),
+            -1px -0   0   rgba( 0, 0, 0, 0.1 ),
+            1px -0   0   rgba( 0, 0, 0, 0.1 ),
+            -1px  0   0   rgba( 0, 0, 0, 0.1 ),
+            1px  0   0   rgba( 0, 0, 0, 0.1 ),
+            -1px -1px 0   rgba( 0, 0, 0, 0.1 ),
+            1px -1px 0   rgba( 0, 0, 0, 0.1 ),
+            -1px  1px 0   rgba( 0, 0, 0, 0.1 ),
+            1px  1px 0   rgba( 0, 0, 0, 0.1 ),
+            -1px -1px 0   rgba( 0, 0, 0, 0.1 ),
+            1px -1px 0   rgba( 0, 0, 0, 0.1 ),
+            -1px  1px 0   rgba( 0, 0, 0, 0.1 ),
+            1px  1px 0   rgba( 0, 0, 0, 0.1 );
 }
 
 .pseudo-link:hover{
@@ -196,9 +240,15 @@ active .link-red:hover{
 }
 
 .tab-btn span{
-    padding: 10px; border: 1px solid #d9dadd; border-bottom: none; border-top: 3px solid #dc3545; border-radius: 4px 4px 0 0; background: #fff;
+    padding: 10px; border: 1px solid #d9dadd; border-bottom: none; border-top: 3px solid #dc3545; border-radius: 4px 4px 0 0; background: #fff; color: #dc3545;
+    font-weight: 700;
 }
-
+.tab-btn i{
+    color: #DC3545!important;
+}
+.tab-btn-dis i{
+    color: #DC3545!important;
+}
 .tab-btn-dis span{
     padding: 10px; border: 1px solid #d9dadd; border-bottom: none; border-top: 3px solid #d6caca; border-radius: 4px 4px 0 0; background: #fff; cursor: pointer;
 }

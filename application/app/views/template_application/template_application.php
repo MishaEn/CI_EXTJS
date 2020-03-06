@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/public/css/adminlte.min.css">
     <link rel="stylesheet" href="/public/plugins/sweetalert2/sweetalert2.min.css">
     <link rel="stylesheet" href="/public/css/app.css">
+    <link rel="stylesheet" href="/public/css/animate.css">
 
 
 <!--    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -20,8 +21,9 @@
     <link rel="stylesheet" href="/public/css/animate.css">-->
     <script src="/public/plugins/jquery/jquery.min.js"></script>
 </head>
-<body class="hold-transition template-app sidebar-mini" style="user-select: none">
-    <div class="handler">
+<body class="hold-transition template-app sidebar-mini layout-fixed" style="user-select: none; overflow-y: hidden">
+    <?php $_SESSION['app']['module_name'] = 'application';  submodule_loader('preloader', 'preloader', null);?>
+    <div class="handler" style="">
         <?php
             if($_SESSION['user']['status'] == 1){
                 module_loader('header');
@@ -47,4 +49,17 @@
     <script src="/public/plugins/tablesort/tablesort.min.js"></script>
     <script src="/public/js/app.js"></script>
 </body>
+<script>
+    $(window).on('load', function () {
+        $('.preloader-wrapper').delay(1000).fadeOut(1000, function () {
+            $('.preloader-wrapper').remove();
+        });
+        $(document).click(function () {
+            $('div[data-type="context-menu"]').removeClass('fadeInLeft').addClass('fadeOutRight');
+            setTimeout(function () {
+                $('div[data-type="context-menu"]').remove();
+            }, 300);
+        })
+    });
+</script>
 </html>

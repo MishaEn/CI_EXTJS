@@ -25,11 +25,9 @@ function valid_field(field, option = null) {
         }
     }
     if(option.regexp){
-
-        if(!option.regexp.exec(field)){
+        if(!option.regexp.test(field)){
             message = 'Некорректное значение поля';
             error_flag = true;
-
             return {message: message, error: error_flag, input: field};
         }
     }
@@ -46,7 +44,8 @@ function field_reaction(field, message, error) {
     let icon = $(field.next()).children().children();
     if(error){
         field.css({
-            'border-color': '#dc3545'
+            'border-color': '#dc3545',
+            'text-decoration': 'none'
         });
         field.next().children().css('border-color', '#dc3545');
         field.addClass('placeholder-color');
@@ -59,358 +58,39 @@ function field_reaction(field, message, error) {
         })
     }
     else{
-        field.css({
+/*        field.css({
             'border-color': '#00bb32'
         });
         field.next().children().css('border-color', '#00bb32');
         field.attr('class','fas fa-check');
         field.css({
             color: '#00bb32'
+        })*/
+
+
+        field.css({
+            'border-color': '#00bb32',
+            'text-decoration': 'none'
+        });
+        field.next().children().css('border-color', '#00bb32');
+        field.addClass('placeholder-color');
+
+        icon.attr('class','fas fa-check');
+        icon.css({
+            color: '#00bb32'
         })
     }
 }
-
-
-
-let app_handler = $('.handler');
-
-/*app_handler.on('click', '.fa-times', function (e) {
-    clear_field(e.target);
-});*/
-app_handler.on('click', '.modal-link', modal_link_handler);
-$(window).resize(function () {
-    let modal_list = $('[data-type]');
-    let content_width = $('.content-wrapper').width()-82;
-    let content_height = $('.content-wrapper').height();
-    let sidebar_width = $('.sidebar').width()+20;
-    let header_width = $('.main-header').height()+20;
-    $.each(modal_list, function (key, item) {
-        $(item).draggable( "option", "containment",  [sidebar_width, header_width, content_width, content_height]);
-    })
-});
-
-
-
-function parse_authentication_error(data) {
-    if(data.error){
-        if(data.status === 'authorization user not exist'){
-            get_login_module();
-        }
-    }
-    else{
-        get_app_module();
-    }
-}
-
-
-function get_register_module() {
-    $.ajax({
-        url: '/app/get_module_register',
-        method: 'POST',
-        dataType: 'html',
-        success: load_register
-    })
-}
-
-function parse_authentification_response(data) {
-    let login = $('.login');
-    let password = $('.password');
-    if(data.error){
-        switch (data.status) {
-            case 'valid fail':
-                $.each(data.field, function (key, item) {
-                    switch (item) {
-                        case 'field empty':
-                            message = 'Поле не может быть пустым';
-                            $('.append-border-'+key).css('border-color', '#dc3545');
-                            break;
-                        case 'min length error':
-                            break;
-                    }
-                    field_reaction($('.'+key), message, data.error);
-                });
-                break;
-            case 'user does not exist':
-                login.val('');
-                field_reaction(login, 'Не правиьный логин', data.error);
-                field_reaction(password,'Не правильный пароль', data.error);
-                break;
-            case 'unexpected error':
-                login.val('');
-                password.val('');
-                field_reaction(login, 'Неожиданная ошибка', data.error);
-                field_reaction(password, 'Неожиданная ошибка', data.error);
-                break;
-            case 'something wrong':
-                login.val('');
-                password.val('');
-                field_reaction(login, 'Что-то пошло не так', data.error);
-                field_reaction(password, 'Что-то пошло не так', data.error);
-                break;
-            case 'wrong login or password':
-                field_reaction(login, 'Не правильный логин', data.error);
-                field_reaction(password, 'Не правильный пароль', data.error);
-                break;
-        }
-    }
-    else{
-        field_reaction(login, 'success', data.error);
-        field_reaction(password, 'success', data.error);
-        check_authorization();
-    }
-}
-
-function load_login(login_html){
-    clear_app_handler();
-    $('body').removeClass('app-page').addClass('login-page');
-    app_handler.append(login_html);
-    $('.login-box').fadeIn(500);
-}
-function load_register(register_html) {
-    $('.dropdown-settings').removeClass('dropdown-open').addClass('dropdown-close');
-    app_handler.append(register_html);
-    $('.login-box').fadeOut(300, function () {
-        $('.login-box').remove();
-        $('.register-box').fadeIn(300);
-
-    })
-}
-function load_app(app_html){
-    $.ajax({
-        url: '/company',
-        method: 'POST',
-        dataType: 'html',
-        success: load_company
-    });
-    $('.login-box').remove();
-    $('body').removeClass('login-page').addClass('app-page');
-    $('.handler').append(app_html);
-    $('.wrapper').show();
-
-}
-function load_modal(modal_html, modal_type, id) {
-
-}
-/*function load_company(company_html) {
-    $('.content').append(company_html);
-    $('.submodule_title').text('Компании')
-}*/
-
-
-function valid_group_field(data) {
-    let valid_result = {};
-    $.each(data.field, function (key, item) {
-        let class_key = flip_line(key);
-        let valid_option = {};
-        let valid_status = valid_field(item, data.option[key]);
-        if(valid_status.error_flag){
-            valid_result[class_key] = true
-        }
-        field_reaction($('.'+class_key), valid_status.message, valid_status.error_flag)
-    });
-    return valid_result;
-}
-
-function valid_login_form(login, password) {
-    let login_valid_status = valid_field(login, {type: 'string', min_length: '5', max_length: '15'});
-    let password_valid_status = valid_field(password, {type: 'string', min_length: '5', max_length: '15'});
-    return {login_status: login_valid_status, password_status: password_valid_status}
-}
-function parse_login_form_error(status) {
-    field_reaction(status.login_status.input, status.login_status.message, status.login_status.error_flag);
-    field_reaction(status.password_status.input, status.password_status.message, status.password_status.error_flag);
-}
-function submit_login_handler(event){
-    event.preventDefault();
-    let login_input = $('.login');
-    let password_input = $('.password');
-    let login_val = login_input.val().trim();
-    let password_val = password_input.val().trim();
-
-    let login_valid_status = valid_field(login_input, {type: 'string', min_length: '5', max_length: '15'});
-    let password_valid_status = valid_field(password_input, {type: 'string', min_length: '5', max_length: '15'});
-
-    let valid_status = valid_login_form(login_input, password_input);
-
-    if(!valid_status.login_status.error_flag && !valid_status.password_status.error_flag){
-        let message = '';
-        $.ajax({
-            url: '/app/authentication',
-            method: 'POST',
-            dataType: 'json',
-            data: {'login': login_val, 'password': password_val},
-            success: parse_authentification_response
-        })
-    }
-    else{
-        parse_login_form_error(valid_status)
-    }
-}
-$(document).on('click', '.remove-modal', function (e) {
-    let target = $(e.target);
-    let parent = target.parents('.modal-close');
-    $(parent).remove();
-});
-function login_settings_handler(event) {
-    let dropdown_menu = $('.dropdown-settings');
-    if(dropdown_menu.hasClass('dropdown-close')){
-        $(event.target).addClass('fa-spin');
-        dropdown_menu.removeClass('dropdown-close');
-        dropdown_menu.fadeIn(300);
-    }
-    else{
-        $(event.target).removeClass('fa-spin');
-        dropdown_menu.removeClass('dropdown-open');
-        dropdown_menu.addClass('dropdown-close');
-        dropdown_menu.fadeOut(300);
-    }
-}
-
-function modal_link_handler(event) {
-    event.preventDefault();
-    let id = $(event.target).next().val();
-    let modal_type = $(event.target).attr('data-modal');
-    let url = '/modal/get_modal_'+modal_type;
-    $.ajax({
-        url: url,
-        method: 'POST',
-        data: {id: id},
-        dataType: 'html',
-        success: function (modal_html) {
-            let type_list = $("div[data-modal-type="+'"'+modal_type+'"]');
-            let number;
-            let modal = $(modal_html)[0];
-            let error_modal = false;
-            if($("div[data-modal-number]").length>0) {
-                if(type_list.length>0){
-                    $.each(type_list, function (key, item) {
-                        if($(item).children('input').val() === id){
-                            error_modal = true;
-                        }
-                    })
-                }
-                number = $('div[data-modal-number]').length + 1;
-            }
-            else{
-                number = 1;
-            }
-            if(!error_modal){
-                let content_width = $('.content-wrapper').width()-82;
-                let content_height = $('.content-wrapper').height();
-                let sidebar_width = $('.sidebar').width()+20;
-                let header_width = $('.main-header').height()+20+$('.content-header').height();
-
-                $(modal).attr('data-modal-number', number);
-                $('.modal-holder').append(modal);
-                $(modal).draggable({
-                    "containment": [sidebar_width, header_width, content_width, content_height],
-                    create: function () {
-                        $('div[data-type="modal"]').on('click', '.tab-button', function (e) {
-                            let target = e.target;
-                            let tab_button = $(target).parent().parent().children();
-                            let content = $(target).attr('data-tab-name');
-                            let tab_content = $($(tab_button).parent().parent()).next().children();
-                            $.each(tab_button, function (key, item) {
-                                let button = $($(item).children());
-                                if(button.attr('data-tab-name') === content){
-                                    if(!button.hasClass('tab-active')){
-                                        $('.tab-active').removeClass('tab-active');
-                                        button.addClass('tab-active')
-                                    }
-                                }
-                            });
-
-                            $.each(tab_content, function (key, item) {
-                                if($(item).attr('data-tab-content-name') === content){
-
-                                    $(item).show();
-                                }
-                                else{
-                                    $(item).hide();
-                                }
-                            })
-                        });
-                        
-                    }
-                });
-                $(modal).on('removed.lte.cardwidget', function () {
-                    let modal_list = $('[data-modal-number]');
-                    $.each(modal_list, function (key, item) {
-                        if($(modal).attr('data-modal-number')<$(item).attr('data-modal-number')){
-                            $(item).attr('data-modal-number', $(item).attr('data-modal-number')-1)
-                        }
-                    });
-                    $(modal).remove();
-                })
-            }
-        }
-    })
-}
-
-
-function add_cross_input(field){
-    let icon = $($(field).next()).children().children();
-    $(icon).attr('class','fas fa-times');
-}
-
-function back_to_login_handler(){
-    get_login_module();
-}
-
-function parse_input_error(field, message){
-    let input = $('.'+field);
-    input.css({
-        'border-color': '#dc3545'
-    });
-    input.addClass('placeholder-color');
-    input.val('');
-    input.attr('placeholder', message);
-}
-
-function flip_line(field){
-    return field.replace(/_/g,"-")
-}
-
-
-
-function clear_app_handler(){
-    app_handler.empty();
-}
-
-
-app_handler.on('focus', 'input', focus_border_handler);
-app_handler.on('focusout', 'input', function (event) {
-    $(event.target).css('border-color', '#ced4da');
-    $($(event.target).next().children()).css('border-color', '#ced4da')
-});
-
-
-function focus_border_handler(event) {
-    $(event.target).removeClass('placeholder-color');
-    $(event.target).attr('placeholder');
-    $(event.target).css('border-color', '#dc3545');
-    $($(event.target).next().children()).css('border-color', '#dc3545')
-}
-
 function create_modal_message(html){
     Swal.fire({
         title: 'Обратите внимание!',
         position: 'top',
         html: html,
+        width: '45%',
         confirmButtonColor: '#dc3545'
     });
 }
 
-function create_popup_message(html){
-    Swal.fire({
-        toast: true,
-        timer: 3000,
-        html: html,
-        background: '#dc3545',
-        position: 'top-end',
-        showConfirmButton: false
-    });
-}
 function remove_row(id) {
     let tr_list = $('tr');
     $.each(tr_list, function (key, item) {
@@ -490,7 +170,7 @@ $(document).ready(function () {
 
         }
     });
-    company_handler.on('click', '.pseudo-link', modal_link_handler);
+    /*company_handler.on('click', '.pseudo-link', modal_link_handler);*/
     company_handler.on('click', '.index-button', function (event) {
         let prev_button = $('.previous');
         let next_button = $('.next');
@@ -858,68 +538,6 @@ $(document).ready(function () {
             }
         }
     });
-    company_handler.on('input', '.filter-input', function (e) {
-        let input = e.target;
-        let sort_type = $('.filter-type').val();
-        let head_row_list = $('table thead tr');
-        let body_row_list = $('table tbody tr');
-        let head_column_list = head_row_list.children();
-        let body_column_list = body_row_list.children();
-        let paginate_button = $('.index-button');
-        let show_count = 0;
-        let column_number = 0;
-        /*$.each(paginate_button, function (key, item) {
-            $(item).show();
-        });*/
-        $.each(head_column_list, function (key, item) {
-            if($(item).children().children().children().text() === sort_type){
-                column_number = key;
-            }
-        });
-        $.each(body_row_list, function (key, item) {
-            let value;
-            if($(item.children[column_number]).children().hasClass('pseudo-link')){
-                value = $(item.children[column_number]).children().text().trim();
-            }
-            else{
-                value = $(item.children[column_number]).text().trim();
-            }
-            if($(input).val() !== ''){
-                if(value.includes($(input).val())){
-                    show_count++;
-                    $(item).addClass('show');
-                    $(item).show();
-                }
-                else{
-                    $(item).removeClass('show');
-                    $(item).hide();
-                }
-            }
-            else{
-                $(item).addClass('show');
-                $(item).show();
-            }
-
-
-        });
-        let button_count = Math.ceil(show_count/10);
-        $.each(paginate_button, function (key, item) {
-            if(button_count===0){
-                $(item).show();
-            }
-            else{
-                if($(item).attr('data-dt-idx')>button_count){
-                    $(item).hide();
-                }
-                else{
-                    $(item).show();
-                }
-            }
-        });
-    });
-    company_handler.on('change', '.filter-type', function (e) {
-        $('.filter-input').val('')
-    });
     company_handler.on('click', '.tab-btn-dis', function (e) {
         $('.tab-btn').removeClass('tab-btn').addClass('tab-btn-dis').attr('data-status', 'disabled');
         $(this).removeClass('tab-btn-dis').addClass('tab-btn').attr('data-status', 'active');
@@ -931,4 +549,49 @@ $(document).ready(function () {
             })
         });
     });
+    $(document).on('click', '.pseudo-link', function (e){
+        let controller = $(e.target).attr('data-modal');
+        let action = $(e.target).attr('data-action');
+        let data = $(e.target).attr('data-data');
+        console.log();
+        $.ajax({
+            url: '/'+controller+'/'+action,
+            method: 'post',
+            dataType: 'html',
+            data: {id: data},
+            success: function (data) {
+                Swal.fire({
+                    html: data,
+                    background: 'rgba(0,0,0,0)',
+                    position: 'top',
+                    showCloseButton: false,
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    onBeforeOpen: () =>     {
+                        if(action === 'update'){
+                            if($('.organization-name').val().trim().substr(0, 3) === 'ООО'){
+                                $('.inn-kpp').mask('9999999999?/999999999');
+                            }
+                            else{
+                                $('.inn-kpp').mask('999999999999');
+                            }
+                            $('.ogrn').mask('9999999999999');
+                            $('.settlement-account').mask('99999999999999999999');
+                            $('.correction-account').mask('99999999999999999999');
+                            $('.bik').mask('999999999');
+                            $('.okpo').mask('99999999');
+                        }
+                        $('button[data-card-widget="remove"]').on('click', function (e) {
+                            Swal.close();
+                        });
+                    }
+                })
+            }
+        })
+    })
 });
+
+function modal_link_handler() {
+
+}

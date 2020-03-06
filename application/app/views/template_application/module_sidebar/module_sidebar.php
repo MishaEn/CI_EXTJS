@@ -1,8 +1,16 @@
 <?php
     function get_short_full_name($full_name){
-        $string_array = explode(' ', $full_name);
+        $new_array = explode(' ', $full_name);
+        $string_array = array_diff($new_array, array(''));
+        sort($string_array);
         if(!empty($full_name)){
-            $short_ful_name = $string_array[0].' '.substr($string_array[1], 0, 2).'. '.substr($string_array[2], 0, 2).'.';
+            if(isset($string_array[2])){
+                $short_ful_name = $string_array[0].' '.substr($string_array[1], 0, 2).'. '.substr($string_array[2], 0, 2).'.';
+            }
+            else{
+                $short_ful_name = $string_array[0].' '.$string_array[1];
+            }
+
         }
         else{
             $short_ful_name = 'Администратор';
@@ -11,11 +19,11 @@
         return $short_ful_name;
     }
     $module = [
-            ['name' => 'company', 'ru_name' => 'Компании', 'fa' =>'globe-europe', 'status' => 'active'],
             ['name' => 'director', 'ru_name' => 'Директора', 'fa' =>'user', 'status' => 'disabled'],
+            ['name' => 'company', 'ru_name' => 'Компании', 'fa' =>'globe-europe', 'status' => 'disabled'],
             ['name' => 'employee', 'ru_name' => 'Сотрудники', 'fa' =>'users', 'status' => 'disabled'],
             ['name' => 'shop', 'ru_name' => 'Магазины', 'fa' =>'shopping-basket', 'status' => 'disabled'],
-            ['name' => 'order', 'ru_name' => 'Заказы', 'fa' =>'money-check', 'status' => 'disabled'],
+            ['name' => 'order', 'ru_name' => 'Заказы', 'fa' =>'money-check', 'status' => 'active'],
             ['name' => 'letter', 'ru_name' => 'Письма', 'fa' =>'envelope', 'status' => 'disabled'],
             ['name' => 'downloads', 'ru_name' => 'Загрузки', 'fa' =>'download', 'status' => 'disabled'],
             ['name' => 'information', 'ru_name' => 'Информация', 'fa' =>'info', 'status' => 'disabled']
@@ -50,8 +58,8 @@
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="/public/img/user2-160x160.webp" class="img-bordered-sm elevation-1" alt="User Image">
+            <div class="image" style="border: 1px solid #CCC; padding: 2px; background: #DC3545; width: 34px; height: 34px">
+                <span style="font-size: 0.7em; color: #FFF; font-weight: 700; margin-left: 10px"><?php echo substr(explode(' ', $data['data']['full_name'])[0], 0, 2)?></span>
             </div>
             <div class="info">
                 <a href="#" class="d-block">
@@ -94,12 +102,12 @@
 
         $(document).on('click', '.module-loader-button', function (e) {
             e.preventDefault();
-            let max_id;
+            /*let max_id;
 
             max_id = setTimeout(function () {});
             while (max_id--) {
                 clearTimeout(max_id);
-            }
+            }*/
             let button;
             if ($(e.target).hasClass('module-loader-button')){
                 button = $(e.target);
@@ -147,39 +155,32 @@
             let title = '<strong>Информация о пользователе</strong>';
             let html =
                 '<div class="card card-danger card-outline">'+
-                    '<div class="card-header">'+
-                    '<h3 class="card-title">'+title+'</h3>'+
-                        '<div class="card-tools">'+
-                            '<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>'+
-                        '</div>'+
-                    '</div>'+
-                    ' <div class="card-body text-left"> ' +
-                        '  ' +
-                        '<b>ФИО</b> <a class="float-right"><?php echo $data['data']['full_name'];?></a>' +
-                        '<ul style="margin-top: 12px;" class="list-group text-left list-group-unbordered mb-3">' +
-                            '<li class="list-group-item">' +
-                                '<b>Статус</b> <a class="float-right"><?php echo $data['data']['status'];?></a>' +
-                            '</li>' +
-                            '<li class="list-group-item">' +
-                                '<b>Логин</b> <a class="float-right"><?php echo $data['data']['login'];?></a>' +
-                            '</li>' +
-                            '<li class="list-group-item">' +
-                                '<b>Email</b> <a class="float-right"><?php echo $data['data']['email'];?></a>' +
-                            '</li>' +
-                            '<li class="list-group-item">' +
-                                '<b>Дата регистрации</b> <a class="float-right"><?php echo $register_date;?></a>' +
-                            '</li>' +
-                        '</ul>' +
-                    '</div>'+
-                    ' <div class="card-footer"> ' +
-                        '<div class="row">' +
-                            '<div class="col-3">' +
-                                '<button class="btn logout btn-block btn-danger">' +
-                                    'Выход' +
-                                '</button>' +
-                            '</div>' +
-                        '</div>' +
-                    ' </div> ' +
+                '<div class="card-header">'+
+                '<h3 class="card-title">'+title+'</h3>'+
+                '<div class="card-tools">'+
+                '<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>'+
+                '</div>'+
+                '</div>'+
+                ' <div class="card-body text-left"> ' +
+                '  ' +
+                '<b>ФИО</b> <a class="float-right"><?php echo $data['data']['full_name'];?></a>' +
+                '<ul style="margin-top: 12px;" class="list-group text-left list-group-unbordered mb-3">' +
+                '<li class="list-group-item">' +
+                '<b>Статус</b> <a class="float-right"><?php echo $data['data']['status'];?></a>' +
+                '</li>' +
+                '<li class="list-group-item">' +
+                '<b>Логин</b> <a class="float-right"><?php echo $data['data']['login'];?></a>' +
+                '</li>' +
+                '<li class="list-group-item">' +
+                '<b>Email</b> <a class="float-right"><?php echo $data['data']['email'];?></a>' +
+                '</li>' +
+                '<li class="list-group-item">' +
+                '<b>Дата регистрации</b> <a class="float-right"><?php echo $register_date;?></a>' +
+                '</li>' +
+                '</ul>' +
+                '</div>'+
+                ' <div class="card-footer"> ' +
+                ' </div> ' +
                 '</div>';
             Swal.fire({
                 html: html,
@@ -193,18 +194,18 @@
                     $('button[data-card-widget="remove"]').on('click', function (e) {
                         Swal.close();
                     });
-                    $('.logout').on('click', function (e) {
-                        $.ajax({
-                            url: '/login/logout',
-                            method: 'post',
-                            dataType: 'json',
-                            success: function (data) {
-                                if(!data.error){
-                                    document.location.href = '/login'
-                                }
-                            }
-                        })
-                    })
+                }
+            })
+        })
+        $('.logout').on('click', function (e) {
+            $.ajax({
+                url: '/login/logout',
+                method: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    if(!data.error){
+                        document.location.href = '/login'
+                    }
                 }
             })
         })

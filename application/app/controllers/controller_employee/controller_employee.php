@@ -17,3 +17,19 @@
         $data = get_last_employee_row($_SESSION['user']['director_id']);
         element_loader('row', $data);
     }
+
+    function action_check_employee_status(){
+        $arr=explode(',', $_POST['id']);
+        $values = '';
+        foreach($arr as $item){
+            $values .= ':var_'.$item.',';
+        }
+        $status = get_employee_status(trim($values, ','), explode(',', $_POST['id']));
+        if($status['error']){
+            $response = $status;
+        }
+        else{
+            $response = ['error' => false, 'status' => 'success', 'data' => $status['data']];
+        }
+        echo json_encode($response);
+    }

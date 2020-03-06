@@ -1,4 +1,4 @@
-<div class="submodule company" data-status="active" data-submoudle-appliaction = "company">
+<div class="submodule company" data-status="disabled" data-submoudle-appliaction = "company">
     <input type="text" data-type="director-id" hidden value="<?php echo $_SESSION['user']['director_id'];?>">
     <?php if($data['error']):?>
         <?php if($data['status'] === 'fetch error'):?>
@@ -11,7 +11,9 @@
                     </div>
                     <div class="card">
                         <div class="card-body company-card" style="height: 73vh;!important;">
-                            <h1>Добавьте свою первую компанию!</h1>
+                            <div class="tab-panel" data-panel-status="active" data-panel-name="">
+                                <h1>Добавьте новую компанию!</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -21,16 +23,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="tab-wrapper" style="z-index: 2000;">
-                    <div class="tab-btn" style="display: inline; z-index: 1200" data-status = "active" data-tab-count="1" data-tab-name = "<?php echo $data['data'][0]['organization_name'];?>">
+                    <div class="tab-btn" data-type="company-tab" style="display: inline; z-index: 1200" data-status = "active" data-tab-count="1" data-tab-name = "<?php echo $data['data'][0]['id'];?>">
                         <span><?php echo $data['data'][0]['organization_name'];?></span>
                     </div>
                     <?php $count = 1; for($i = 1; $i<count($data['data']); $i++):?>
-                        <div class="tab-btn-dis" style="display: inline; margin-left: -6px; z-index: <?php echo 1200-$i;?>" data-status = "disabled" data-tab-count="<?php echo ++$count?>" data-tab-name = "<?php echo $data['data'][$i]['organization_name'];?>">
+                        <div class="tab-btn-dis"  data-type="company-tab" style="display: inline; margin-left: -6px; z-index: <?php echo 1200-$i;?>" data-status = "disabled" data-tab-count="<?php echo ++$count?>" data-tab-name = "<?php echo $data['data'][$i]['id'];?>">
                             <span><?php echo $data['data'][$i]['organization_name'];?></span>
                         </div>
                     <?php endfor;?>
                     <?php if(in_array($_SESSION['user']['role_id'], $_SESSION['app']['role_policy']['company']['create'])):?>
-                        <div class="tab-btn-dis" style="display: inline; margin-left: -6px; z-index: <?php echo 1200-$i;?>" data-status = "disabled" data-tab-name = "add-company">
+                        <div class="tab-btn-dis" style="display: inline; margin-left: -6px; z-index: <?php echo 1200-$i;?>" data-status = "disabled" data-tab-count="0" data-tab-name = "add-company">
                             <span><i style="color: #e2e4e7" class="fas fa-plus"></i></span>
                         </div>
                     <?php endif;?>
@@ -39,7 +41,7 @@
                 <div class="card" style="z-index: 500; margin-top: 9px">
                     <div class="card-body company-card" style="height: 75.5vh; overflow-y: scroll">
 
-                        <div class="tab-panel" data-panel-status="active" data-panel-name="<?php echo $data['data'][0]['organization_name'];?>">
+                        <div class="tab-panel" data-panel-status="active" data-panel-name="<?php echo $data['data'][0]['id'];?>">
                             <?php
                             $delete = 'false';
                             $edit = 'false';
@@ -72,34 +74,34 @@
                             }
                             ?>
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col-4">
                                     <h1><?php echo $data['data'][0]['organization_name'];?></h1>
                                 </div>
-                                <div class="col-3 text-left" style="padding-top: 10px; padding-left: 0">
+                                <div class="col-2 text-left" style="padding-top: 10px; padding-left: 0">
                                     <span data-type="company-status" data-id="<?php echo $data['data'][0]['id']?>"  data-status="<?php echo $data['data'][0]['status'];?>" style="font-size: 25px; color: <?php echo $color;?>;"><?php echo $text;?></span>
                                 </div>
                                 <?php
                                 switch($data['data'][0]['status']){
                                     case 3:
-                                        echo   '<div class="col-2 offset-2 text-center" style="margin-top:10px; padding-top: 10px">
-                                                        <i data-type="disabled-edit" data-edit="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-edit"></i>
-                                                        <i data-type="disabled-block" data-block="'.$block.'" data-id="'.$data['data'][0]['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-lock"></i>
-                                                        <i data-type="checked-delete" data-delete="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #DC3545; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-trash-alt"></i>
-                                                    </div>';
+                                        echo   '<div class="col-4 offset-2 text-right" style="margin-top:10px; padding-top: 10px">
+                                                    <i data-type="disabled-edit" data-edit="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-edit"><span style="font-size: 0.9em"> Редактировать</span></i>
+                                                    <i data-type="disabled-block" data-block="'.$block.'" data-id="'.$data['data'][0]['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-lock"><span style="font-size: 0.9em"> Блокировать</span></i>
+                                                    <i data-type="checked-delete" data-delete="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #DC3545; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-trash-alt"><span style="font-size: 0.9em"> Удалить</span></i>
+                                                </div>';
                                         break;
                                     case 4:
-                                        echo   '<div class="col-2 offset-2 text-center" style="margin-top:10px; padding-top: 10px">
-                                                        <i data-type="disabled-edit" data-edit="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-edit"></i>
-                                                        <i data-type="checked-block" data-block="'.$block.'" data-id="'.$data['data'][0]['id'].'" style="color: #333333; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-lock"></i>
-                                                        <i data-type="disabled-delete" data-delete="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-trash-alt"></i>
-                                                    </div>';
+                                        echo   '<div class="col-4 offset-2 text-right" style="margin-top:10px; padding-top: 10px">
+                                                   <i data-type="disabled-edit" data-edit="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-edit"><span style="font-size: 0.9em"> Редактировать</span></i>
+                                                   <i data-type="checked-block" data-block="'.$block.'" data-id="'.$data['data'][0]['id'].'" style="color: #333333; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-lock"><span style="font-size: 0.9em"> Блокировать</span></i>
+                                                   <i data-type="disabled-delete" data-delete="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-trash-alt" style="font-size: 0.9em"><span> Удалить</span></i>
+                                                </div>';
                                         break;
                                     default:
-                                        echo   '<div class="col-2 offset-2 text-center" style="margin-top:10px; padding-top: 10px">
-                                                        <i data-type="checked-edit" data-edit="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #28a745; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-edit"></i>
-                                                        <i data-type="checked-block" data-block="'.$block.'" data-id="'.$data['data'][0]['id'].'" style="color: #333333; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-lock"></i>
-                                                        <i data-type="checked-delete" data-delete="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #DC3545; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-trash-alt"></i>
-                                                    </div>';
+                                        echo   '<div class="col-4 offset-2 text-right" style="margin-top:10px; padding-top: 10px">
+                                                   <i data-type="checked-edit" data-edit="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #28a745; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-edit"><span style="font-size: 0.9em"> Редактировать</span></i>
+                                                   <i data-type="checked-block" data-block="'.$block.'" data-id="'.$data['data'][0]['id'].'" style="color: #333333; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-lock"><span style="font-size: 0.9em"> Блокировать</span></i>
+                                                   <i data-type="checked-delete" data-delete="'.$delete.'" data-id="'.$data['data'][0]['id'].'" style="color: #DC3545; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-trash-alt"><span style="font-size: 0.9em"> Удалить</span></i>
+                                                </div>';
                                         break;
                                 }
                                 ?>
@@ -108,7 +110,7 @@
                             <hr>
                             <div class="row row-description">
                                 <div class="col-2">
-                                    <span>Директор:</span>
+                                    <span>ФИО директора:</span>
                                 </div>
                                 <div class="col-10">
                                     <span data-type="editable" data-id="<?php echo $data['data'][0]['id']?>" data-option="1" data-edit-status="false"><?php echo $data['data'][0]['director_name'];?></span>
@@ -196,7 +198,7 @@
                         </div>
                         <?php foreach ($data['data']  as $key => $item):?>
                             <?php   if ($key === 0)continue?>
-                            <div class="tab-panel" data-panel-status="disabled" style="display: none" data-panel-name="<?php echo $item['organization_name'];?>">
+                            <div class="tab-panel" data-panel-status="disabled" style="display: none" data-panel-name="<?php echo $item['id'];?>">
                                 <?php
                                 $delete = 'false';
                                 $edit = 'false';
@@ -229,33 +231,33 @@
                                 }
                                 ?>
                                 <div class="row">
-                                    <div class="col-5">
+                                    <div class="col-4">
                                         <h1><?php echo $item['organization_name'];?></h1>
                                     </div>
-                                    <div class="col-3 text-left" style="padding-top: 10px; padding-left: 0">
+                                    <div class="col-2 text-left" style="padding-top: 10px; padding-left: 0">
                                         <span data-type="company-status" data-id="<?php echo $item['id']?>" data-status="<?php echo $item['status'];?>" style="font-size: 25px; color: <?php echo $color;?>;"><?php echo $text;?></span>
                                     </div>
                                     <?php
                                     switch($item['status']){
                                         case 3:
-                                            echo   '<div class="col-2 offset-2 text-center" style="margin-top:10px; padding-top: 10px">
-                                                        <i data-type="disabled-edit" data-edit="'.$delete.'" data-id="'.$item['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-edit"></i>
-                                                        <i data-type="disabled-block" data-block="'.$block.'" data-id="'.$item['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-lock"></i>
-                                                        <i data-type="checked-delete" data-delete="'.$delete.'" data-id="'.$item['id'].'" style="color: #DC3545; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-trash-alt"></i>
+                                            echo   '<div class="col-4 offset-2 text-right" style="margin-top:10px; padding-top: 10px">
+                                                        <i data-type="disabled-edit" data-edit="'.$delete.'" data-id="'.$item['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-edit"><span style="font-size: 0.9em"> Редактировать</span></i>
+                                                        <i data-type="disabled-block" data-block="'.$block.'" data-id="'.$item['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-lock"><span style="font-size: 0.9em"> Блокировать</span></i>
+                                                        <i data-type="checked-delete" data-delete="'.$delete.'" data-id="'.$item['id'].'" style="color: #DC3545; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-trash-alt"><span style="font-size: 0.9em"> Удалить</span></i>
                                                     </div>';
                                             break;
                                         case 4:
-                                            echo   '<div class="col-2 offset-2 text-center" style="margin-top:10px; padding-top: 10px">
-                                                        <i data-type="disabled-edit" data-edit="'.$delete.'" data-id="'.$item['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-edit"></i>
-                                                        <i data-type="checked-block" data-block="'.$block.'" data-id="'.$item['id'].'" style="color: #333333; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-lock"></i>
-                                                        <i data-type="disabled-delete" data-delete="'.$delete.'" data-id="'.$item['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-trash-alt"></i>
+                                            echo   '<div class="col-4 offset-2 text-right" style="margin-top:10px; padding-top: 10px">
+                                                       <i data-type="disabled-edit" data-edit="'.$delete.'" data-id="'.$item['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-edit"><span style="font-size: 0.9em"> Редактировать</span></i>
+                                                       <i data-type="checked-block" data-block="'.$block.'" data-id="'.$item['id'].'" style="color: #333333; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-lock"><span style="font-size: 0.9em"> Блокировать</span></i>
+                                                       <i data-type="disabled-delete" data-delete="'.$delete.'" data-id="'.$item['id'].'" style="color: #6c757d; font-size: 1.31em; cursor: default; margin-right: 10px" class="fas fa-trash-alt" style="font-size: 0.9em"><span> Удалить</span></i>
                                                     </div>';
                                             break;
                                         default:
-                                            echo   '<div class="col-2 offset-2 text-center" style="margin-top:10px; padding-top: 10px">
-                                                        <i data-type="checked-edit" data-edit="'.$delete.'" data-id="'.$item['id'].'" style="color: #28a745; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-edit"></i>
-                                                        <i data-type="checked-block" data-block="'.$block.'" data-id="'.$item['id'].'" style="color: #333333; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-lock"></i>
-                                                        <i data-type="checked-delete" data-delete="'.$delete.'" data-id="'.$item['id'].'" style="color: #DC3545; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-trash-alt"></i>
+                                            echo   '<div class="col-4 offset-2 text-right" style="margin-top:10px; padding-top: 10px">
+                                                       <i data-type="checked-edit" data-edit="'.$delete.'" data-id="'.$item['id'].'" style="color: #28a745; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-edit"><span style="font-size: 0.9em"> Редактировать</span></i>
+                                                       <i data-type="checked-block" data-block="'.$block.'" data-id="'.$item['id'].'" style="color: #333333; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-lock"><span style="font-size: 0.9em"> Блокировать</span></i>
+                                                       <i data-type="checked-delete" data-delete="'.$delete.'" data-id="'.$item['id'].'" style="color: #DC3545; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-trash-alt"><span style="font-size: 0.9em"> Удалить</span></i>
                                                     </div>';
                                             break;
                                     }
@@ -362,6 +364,7 @@
 <script>
     $(document).ready(function () {
         let company_handler = $('.company');
+
         setInterval(function () {
             let status_title = $('.tab-panel[data-panel-status="active"]').children().find('span[data-type="company-status"]');
             let edit_icon =  $('.tab-panel[data-panel-status="active"]').children().find('i[data-type="checked-edit"]');
@@ -428,147 +431,212 @@
                 }
             })
         },2500);
-        company_handler.on('click', '.tab-btn-dis', function (e) {
+        $('div[data-type="company-tab"]').click(function(e){
+            let company_name = $(this).attr('data-tab-name');
+            $('.tab-btn').removeClass('tab-btn').addClass('tab-btn-dis').attr('data-status', 'disabled');
+            $(this).removeClass('tab-btn-dis').addClass('tab-btn').attr('data-status', 'active');
+            $('[data-panel-status ="active"]').fadeOut(100, function () {
+                $('[data-panel-status ="active"]').attr('data-panel-status', 'disabled');
+                $('[data-panel-name="'+company_name+'"]').fadeIn(100, function f() {
+                    $(this).attr('data-panel-status', 'active');
+                })
+            });
+        });
+
+        $('div[data-tab-name="add-company"]').click(function (e) {
             let panel_name = $(this).attr('data-tab-name');
             let list = $('div[data-tab-count]');
-            let count = $(list[list.length - 1]).attr('data-tab-count');
-            if(panel_name !== 'add-company'){
-                $('.tab-btn').removeClass('tab-btn').addClass('tab-btn-dis').attr('data-status', 'disabled');
-                $(this).removeClass('tab-btn-dis').addClass('tab-btn').attr('data-status', 'active');
-                $('[data-panel-status ="active"]').fadeOut(100, function () {
-                    $('[data-panel-status ="active"]').attr('data-panel-status', 'disabled');
-                    $('[data-panel-name="'+panel_name+'"]').fadeIn(100, function f() {
-                        $(this).attr('data-panel-status', 'active');
-                    })
-                });
-            }
-            else{
-                count++;
-                let director_id = $('input[data-type="director-id"]').val();
-                $.ajax({
-                    url: '/company/add_company',
-                    dataType: 'json',
-                    method: 'post',
-                    data: {id: director_id, count: count},
-                    success: function (data) {
-                        $('.company-card').append(
-                            '<div class="tab-panel" data-panel-status="disabled" style="display: none" data-panel-name="new-company '+count+'">'+
-                            '<div class="row">'+
-                            '<div class="col-5">'+
-                            '<h1>Новая компания '+count+'</h1>'+
-                            '</div>'+
-                            '<div class="col-3 text-left" style="padding-top: 10px; padding-left: 0">'+
-                            '<span data-type="company-status" data-id="'+data.data+'" data-status="0" style="font-size: 25px; color: #fd7e14;">Не активирована</span>'+
-                            '</div>'+
-                            '<div class="col-2 offset-2 text-center" style="margin-top:10px; padding-top: 10px">'+
-                            '<i data-type="checked-edit" data-edit="false" data-id="'+data.data+'" style="color: #28a745; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-edit"></i>'+
-                            '<i data-type="checked-block" data-block="false" data-id="'+data.data+'" style="color: #333333; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-lock"></i>'+
-                            '<i data-type="checked-delete" data-delete="false" data-id="'+data.data+'" style="color: #DC3545; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-trash-alt"></i>'+
-                            '</div>'+
-                            '</div>'+
-                            '<hr>'+
-                            '<h2>Основная информация</h2>'+
-                            '<hr>'+
-                            '<div class="row row-description">'+
-                            '<div class="col-2">'+
-                            '<span>Директор:</span>'+
-                            '</div>'+
-                            '<div class="col-5">'+
-                            '<span data-type="editable" data-id="'+data.data+'" data-option="1" data-edit-status="false"></span>'+
-                            '</div>'+
-                            '</div>'+
-                            '<div class="row row-description">'+
-                            '<div class="col-2">'+
-                            '<span>ИНН/КПП:</span>'+
-                            '</div>'+
-                            '<div class="col-5">'+
-                            '<span data-type="editable" data-id="'+data.data+'" data-option="2" data-edit-status="false"></span>'+
-                            '</div>'+
-                            '</div>'+
-                            '<div class="row row-description">'+
-                            '<div class="col-2">'+
-                            '<span>ОГРН:</span>'+
-                            '</div>'+
-                            '<div class="col-5">'+
-                            '<span data-type="editable" data-id="'+data.data+'" data-option="3" data-edit-status="false"></span>'+
-                            '</div>'+
-                            '</div>'+
-                            '<hr>'+
-                            '<h2>Адреса компании</h2>'+
-                            '<hr>'+
-                            '<div class="row row-description">'+
-                            '<div class="col-2">'+
-                            '<span>Юридический адрес:</span>'+
-                            '</div>'+
-                            '<div class="col-5">'+
-                            '<span data-type="editable" data-id="'+data.data+'" data-option="4" data-edit-status="false"></span>'+
-                            '</div>'+
-                            '</div>'+
-                            '<div class="row row-description">'+
-                            '<div class="col-2">'+
-                            '<span>Почтовый адрес:</span>'+
-                            '</div>'+
-                            '<div class="col-5">'+
-                            '<span data-type="editable" data-id="'+data.data+'" data-option="5" data-edit-status="false"></span>'+
-                            '</div>'+
-                            '</div>'+
-                            '<hr>'+
-                            '<h2>Банк и счета</h2>'+
-                            '<hr>'+
-                            '<div class="row row-description">'+
-                            '<div class="col-2">'+
-                            '<span>Рассчетный счет:</span>'+
-                            '</div>'+
-                            '<div class="col-5">'+
-                            '<span data-type="editable" data-id="'+data.data+'" data-option="6" data-edit-status="false"></span>'+
-                            '</div>'+
-                            '</div>'+
-                            '<div class="row row-description">'+
-                            '<div class="col-2">'+
-                            '<span>Корреспондентский счет:</span>'+
-                            '</div>'+
-                            '<div class="col-5">'+
-                            '<span data-type="editable" data-id="'+data.data+'" data-option="7" data-edit-status="false"></span>'+
-                            '</div>'+
-                            '</div>'+
-                            '<div class="row row-description">'+
-                            '<div class="col-2">'+
-                            '<span>Название банка:</span>'+
-                            '</div>'+
-                            '<div class="col-5">'+
-                            '<span data-type="editable" data-id="'+data.data+'" data-option="8" data-edit-status="false"></span>'+
-                            '</div>'+
-                            '</div>'+
-                            '<div class="row row-description">'+
-                            '<div class="col-2">'+
-                            '<span>БИК:</span>'+
-                            '</div>'+
-                            '<div class="col-5">'+
-                            '<span data-type="editable" data-id="'+data.data+'" data-option="9" data-edit-status="false"></span>'+
-                            '</div>'+
-                            '</div>'+
-                            '<div class="row row-description">'+
-                            '<div class="col-2">'+
-                            '<span>ОКПО:</span>'+
-                            '</div>'+
-                            '<div class="col-5">'+
-                            '<span data-type="editable" data-id="'+data.data+'" data-option="10" data-edit-status="false"></span>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>'
-                        );
-                        $('.tab-btn').removeClass('tab-btn').addClass('tab-btn-dis').attr('data-status', 'disabled');
-                        $('div[data-tab-name="add-company"]').before('<div class="tab-btn" style="display: inline; margin-left: -6px;" data-tab-count="'+ count +'" data-status = "active" data-tab-name = "new-company '+count+'"><span>Новая компания '+ count +'</span></div>');
-                        $('.tab-panel[data-panel-status="active"]').fadeOut(300, function () {
-                            $(this).attr('data-panel-status', 'disabled');
-                            $('.tab-panel[data-panel-name="new-company '+count+'"]').fadeIn(300, function () {
-                                $(this).attr('data-panel-status', 'active');
-                            });
-                        })
-                    }
-                })
-            }
+            let count;
+            let company_name;
 
+
+            let form =
+                '<div class="card card-danger card-outline">'+
+                    '<div class="card-header">'+
+                        '<h3 class="card-title">Добавление новой компании</h3>'+
+                        '<div class="card-tools">'+
+                            '<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="card-body">'+
+                        '<div class="row">'+
+                            '<div class="col-3">'+
+                                '<div class="input-group mb-3">'+
+                                    '<select class="custom-select" data-type="company-type">'+
+                                    '<option>ООО</option>'+
+                                    '<option>ИП</option>'+
+                                    '</select>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="col-9">'+
+                                '<div class="input-group mb-3">'+
+                                    '<input type="text" class="form-control code" data-type="organization-name" data-placeholder ="Название компании"  placeholder="Название компании" value="">'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="card-footer">'+
+                        '<div class="row">'+
+                            '<div class="col-12">'+
+                                '<button class="btn add-company btn-block btn-danger">'+
+                                    'Добавить'+
+                                '</button>'+
+                                '<input type="text" hidden value="">'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>';
+
+            Swal.fire({
+                html: form,
+                background: 'rgba(0,0,0,0)',
+                position: 'top',
+                showCloseButton: false,
+                showConfirmButton: false,
+                showCancelButton: false,
+                focusConfirm: false,
+                onBeforeOpen: () => {
+                    $('button[data-card-widget="remove"]').on('click', function (e) {
+                        Swal.close();
+                    });
+                    $('.add-company').click(function () {
+                        company_name = $('select[data-type="company-type"]').val()+' '+$('input[data-type="organization-name"]').val();
+                        if(company_name.trim() !== ''){
+                            Swal.close();
+                            if(list.length === 0){
+                                count = 0;
+                            }
+                            else {
+                                count =  $(list[list.length - 1]).attr('data-tab-count')
+                            }
+                            count++;
+                            let director_id = $('input[data-type="director-id"]').val();
+                            $.ajax({
+                                url: '/company/add_company',
+                                dataType: 'json',
+                                method: 'post',
+                                data: {id: director_id, organization_name: company_name, count: count},
+                                success: function (data) {
+                                    $('.company-card').append(
+                                        '<div class="tab-panel" data-panel-status="disabled" style="display: none" data-panel-name="'+company_name+count+'">'+
+                                        '<div class="row">'+
+                                        '<div class="col-4">'+
+                                        '<h1>'+company_name+'</h1>'+
+                                        '</div>'+
+                                        '<div class="col-2 text-left" style="padding-top: 10px; padding-left: 0">'+
+                                        '<span data-type="company-status" data-id="'+data.data+'" data-status="0" style="font-size: 25px; color: #fd7e14;">Не активирована</span>'+
+                                        '</div>'+
+                                        '<div class="col-4 offset-2 text-right" style="margin-top:10px; padding-top: 10px">'+
+                                        '<i data-type="checked-edit" data-edit="false" data-id="'+data.data+'" style="color: #28a745; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-edit"><span style="font-size: 0.9em"> Редактировать</span></i>'+
+                                        '<i data-type="checked-block" data-block="false" data-id="'+data.data+'" style="color: #333333; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-lock"><span style="font-size: 0.9em"> Блокировать</span></i>'+
+                                        '<i data-type="checked-delete" data-delete="false" data-id="'+data.data+'" style="color: #DC3545; font-size: 1.31em; cursor: pointer; margin-right: 10px" class="fas fa-trash-alt"><span style="font-size: 0.9em"> Удалить</span></i>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '<hr>'+
+                                        '<h2>Основная информация</h2>'+
+                                        '<hr>'+
+                                        '<div class="row row-description">'+
+                                        '<div class="col-2">'+
+                                        '<span>Директор:</span>'+
+                                        '</div>'+
+                                        '<div class="col-5">'+
+                                        '<span data-type="editable" data-id="'+data.data+'" data-option="1" data-edit-status="false"></span>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '<div class="row row-description">'+
+                                        '<div class="col-2">'+
+                                        '<span>ИНН/КПП:</span>'+
+                                        '</div>'+
+                                        '<div class="col-5">'+
+                                        '<span data-type="editable" data-id="'+data.data+'" data-option="2" data-edit-status="false"></span>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '<div class="row row-description">'+
+                                        '<div class="col-2">'+
+                                        '<span>ОГРН:</span>'+
+                                        '</div>'+
+                                        '<div class="col-5">'+
+                                        '<span data-type="editable" data-id="'+data.data+'" data-option="3" data-edit-status="false"></span>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '<hr>'+
+                                        '<h2>Адреса компании</h2>'+
+                                        '<hr>'+
+                                        '<div class="row row-description">'+
+                                        '<div class="col-2">'+
+                                        '<span>Юридический адрес:</span>'+
+                                        '</div>'+
+                                        '<div class="col-5">'+
+                                        '<span data-type="editable" data-id="'+data.data+'" data-option="4" data-edit-status="false"></span>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '<div class="row row-description">'+
+                                        '<div class="col-2">'+
+                                        '<span>Почтовый адрес:</span>'+
+                                        '</div>'+
+                                        '<div class="col-5">'+
+                                        '<span data-type="editable" data-id="'+data.data+'" data-option="5" data-edit-status="false"></span>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '<hr>'+
+                                        '<h2>Банк и счета</h2>'+
+                                        '<hr>'+
+                                        '<div class="row row-description">'+
+                                        '<div class="col-2">'+
+                                        '<span>Рассчетный счет:</span>'+
+                                        '</div>'+
+                                        '<div class="col-5">'+
+                                        '<span data-type="editable" data-id="'+data.data+'" data-option="6" data-edit-status="false"></span>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '<div class="row row-description">'+
+                                        '<div class="col-2">'+
+                                        '<span>Корреспондентский счет:</span>'+
+                                        '</div>'+
+                                        '<div class="col-5">'+
+                                        '<span data-type="editable" data-id="'+data.data+'" data-option="7" data-edit-status="false"></span>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '<div class="row row-description">'+
+                                        '<div class="col-2">'+
+                                        '<span>Название банка:</span>'+
+                                        '</div>'+
+                                        '<div class="col-5">'+
+                                        '<span data-type="editable" data-id="'+data.data+'" data-option="8" data-edit-status="false"></span>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '<div class="row row-description">'+
+                                        '<div class="col-2">'+
+                                        '<span>БИК:</span>'+
+                                        '</div>'+
+                                        '<div class="col-5">'+
+                                        '<span data-type="editable" data-id="'+data.data+'" data-option="9" data-edit-status="false"></span>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '<div class="row row-description">'+
+                                        '<div class="col-2">'+
+                                        '<span>ОКПО:</span>'+
+                                        '</div>'+
+                                        '<div class="col-5">'+
+                                        '<span data-type="editable" data-id="'+data.data+'" data-option="10" data-edit-status="false"></span>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>'
+                                    );
+                                    $('.tab-btn').removeClass('tab-btn').addClass('tab-btn-dis').attr('data-status', 'disabled');
+                                    $('div[data-tab-name="add-company"]').before('<div class="tab-btn" data-type="company-tab" style="display: inline; margin-left: -6px;" data-tab-count="'+ count +'" data-status = "active" data-tab-name = "'+company_name+count+'"><span>'+company_name+'</span></div>');
+                                    $('.tab-panel[data-panel-status="active"]').fadeOut(300, function () {
+                                        $(this).attr('data-panel-status', 'disabled');
+                                        $('.tab-panel[data-panel-name="'+company_name+count+'"]').fadeIn(300, function () {
+                                            $(this).attr('data-panel-status', 'active');
+                                        });
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }
+            });
         });
         /*company_handler.on('mouseover', 'i[data-type="checked-edit"]', function (e) {
             $(e.target).addClass('animated wobble')
@@ -686,7 +754,7 @@
                 let error = false;
                 let status;
                 let option = {
-                    director_name : {type: 'string', min_length: '6', regexp: /^([А-Я][а-я]{1,}[-][А-Я][а-я]{1,}|[А-Я][а-я]{1,})\s[А-Я][а-я]{1,}\s[А-Я][а-я]{1,}$/},
+                    director_name : {type: 'string', min_length: '6', regexp: /^([А-Я][а-я]{1,}[-][А-Я][а-я]{1,}|[А-Я][а-я]{1,})\s[А-Я][а-я]{1,}\s[А-Я][а-я]{1,}|([А-Я][а-я]{1,}[-][А-Я][а-я]{1,}|[А-Я][а-я]{1,})\s[А-Я][а-я]{1,}$/},
                     inn_kpp : {type: 'string', min_length: 12, max_length: 20, regexp: /^[0-9]{12}|([0-9]{10}\/[0-9]{9})$/ },
                     ogrn : {type: 'string', min_length: 13, max_length: 15, regexp: /^[0-9]{13,15}$/ },
                     juridical_address : {type: 'string', min_length: '5'},

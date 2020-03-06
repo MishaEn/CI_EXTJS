@@ -16,6 +16,9 @@
             <span class="text-left pseudo-link register-link">Зарегистрироваться</span>
         </p>
     </div>
+    <?php
+        element_loader('egg');
+    ?>
     <script>
         $('.register-link').click(function (e) {
             document.location.href = '/register';

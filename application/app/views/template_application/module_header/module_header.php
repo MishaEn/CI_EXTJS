@@ -1,18 +1,37 @@
 <!--TODO: Шапка-->
 <nav class="main-header navbar navbar-expand navbar-light">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link sidebar-collapse-button" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="https://dedal-service.ru/">На основной сайт</a>
-        </li>
-        <li class="nav-item">
-           <span style="color:  rgb(0, 123, 255)" class="pseudo-link nav-link help">Помощь</span>
-        </li>
+    <ul class="navbar-nav" style="width: 100%!important;">
+        <div class="row" style="width: 100%!important;">
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-1">
+                        <li class="nav-item">
+                            <a class="nav-link sidebar-collapse-button" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                        </li>
+                    </div>
+                    <div class="col-11">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://dedal-service.ru/">На основной сайт</a>
+                        </li>
+                    </div>
+                </div>
 
+            </div>
+            <div class="col-1 offset-6 text-right">
+                <li class="nav-item ml-3">
+                    <span style="color:  rgb(0, 123, 255)" class="pseudo-link nav-link help">Помощь</span>
+                </li>
+            </div>
+            <div class="col-1 text-right">
+                <li class="nav-item">
+                    <button class="btn logout btn-danger">
+                        Выход
+                    </button>
+                </li>
+            </div>
+        </div>
     </ul>
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav">
         <!--todo: Сообщения-->
         <!--<li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">

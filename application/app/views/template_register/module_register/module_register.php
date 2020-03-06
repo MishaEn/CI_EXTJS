@@ -14,12 +14,12 @@
             <h3 class="login-box-msg">Регистрация</h3>
             <div class="row">
                 <div class="col-6"><p class="step-title">Шаг 1: Личные данные</p></div>
-                <div class="col-6 text-right"><span class="pseudo-link help">Описание полей форм регистрации</span></div>
+                <div class="col-6 text-right"><span class="pseudo-link help">Описание полей формы регистрации</span></div>
             </div>
             <div class="first-step" data-status="active" data-step="first">
                 <form>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control full-name" data-placeholder ="Фамилия Имя Отчество"  placeholder="Фамилия Имя Отчество" value="Иванов Иван Иванович">
+                        <input type="text" class="form-control full-name" data-placeholder ="Фамилия Имя Отчество"  placeholder="Фамилия Имя Отчество" value="">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas"></span>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control email" data-placeholder ="Email"  placeholder="Email" value="mishaen@gmail.com">
+                        <input type="email" class="form-control email" data-placeholder ="Email"  placeholder="Email" value="">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas"></span>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control login" data-placeholder ="Логин"  placeholder="Логин" value="mishaen">
+                        <input type="text" class="form-control login" data-placeholder ="Логин"  placeholder="Логин" value="">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas"></span>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control password" data-placeholder ="Пароль"  placeholder="Пароль" value="password">
+                        <input type="password" class="form-control password" data-placeholder ="Пароль"  placeholder="Пароль" value="">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas"></span>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control confirm-password" data-placeholder ="Подтверждение пароля"  placeholder="Подтверждение пароля" value="password">
+                        <input type="password" class="form-control confirm-password" data-placeholder ="Подтверждение пароля"  placeholder="Подтверждение пароля" value="">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas"></span>
@@ -81,7 +81,7 @@
                         </div>
                         <div class="col-10">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control organization-name" data-placeholder ="Название организации"  placeholder="Название организации" value="Рога и копыта">
+                                <input type="text" class="form-control organization-name" data-placeholder ="Название организации"  placeholder="Название организации" value="">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas"></span>
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control director-name" data-placeholder ="ФИО руководителя"  placeholder="ФИО руководителя" value="Иванов Иван Иванович">
+                        <input type="text" class="form-control director-name" data-placeholder ="ФИО руководителя"  placeholder="ФИО руководителя" value="">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas"></span>
@@ -101,7 +101,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control inn-kpp" data-placeholder ="ИНН"  placeholder="ИНН/КПП" value="1234567890/123456789">
+                                <input type="text" class="form-control inn-kpp" data-placeholder ="ИНН"  placeholder="ИНН/КПП" value="">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas"></span>
@@ -111,7 +111,7 @@
                         </div>
                         <div class="col-6">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control ogrn" data-placeholder ="ОГРН"  placeholder="ОГРН" value="1234567890123">
+                                <input type="text" class="form-control ogrn" data-placeholder ="ОГРН"  placeholder="ОГРН" value="">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas"></span>
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control juridical-address" data-placeholder ="Адрес юредический"  placeholder="Адрес юредический" value="ул. Пушкина, д. Колотушкина">
+                        <input type="text" class="form-control juridical-address" data-placeholder ="Адрес юридический"  placeholder="Адрес юридический" value="">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas"></span>
@@ -129,7 +129,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control postal-address" data-placeholder ="Адрес почтовый"  placeholder="Адрес почтовый" value="ул. Пушкина, д. Колотушкина">
+                        <input type="text" class="form-control postal-address" data-placeholder ="Адрес почтовый"  placeholder="Адрес почтовый" value="">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas"></span>
@@ -137,7 +137,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control settlement-account" data-placeholder ="Расчетные счет"  placeholder="Расчетные счет" value="12345678901234567890">
+                        <input type="text" class="form-control settlement-account" data-placeholder ="Расчетный счет"  placeholder="Расчетные счет" value="">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas"></span>
@@ -145,7 +145,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control bank-name" data-placeholder ="Наименование банка"  placeholder="Наименование банка" value="Банк">
+                        <input type="text" class="form-control bank-name" data-placeholder ="Наименование банка"  placeholder="Наименование банка" value="">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas"></span>
@@ -153,7 +153,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control correction-account" data-placeholder ="Корреспондентский счет"  placeholder="Корреспондентский счет" value="12345678901234567890">
+                        <input type="text" class="form-control correction-account" data-placeholder ="Корреспондентский счет"  placeholder="Корреспондентский счет" value="">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas"></span>
@@ -163,7 +163,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control bik" data-placeholder ="БИК"  placeholder="БИК" value="999999999">
+                                <input type="text" class="form-control bik" data-placeholder ="БИК"  placeholder="БИК" value="">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas"></span>
@@ -173,7 +173,7 @@
                         </div>
                         <div class="col-6">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control okpo" data-placeholder ="ОКПО"  placeholder="ОКПО" value="12345678">
+                                <input type="text" class="form-control okpo" data-placeholder ="ОКПО"  placeholder="ОКПО" value="">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas"></span>
@@ -286,14 +286,14 @@
             let pre_register_msg = '<div class=text-left>\n' +
                 '<p>Для активации Вашей учетной записи необходимо выполнить три шага регистрации:</p>\n' +
                 '                <ul style="list-style:  none">\n' +
-                '                    <li>Шаг 1: Заполненние личной инфорации о директоре</li>\n' +
-                '                    <li>Шаг 2: Заполненние инфорации об организации</li>\n' +
-                '                    <li>Шаг 3: Заполненние инфорации о магазине</li>\n' +
+                '                    <li>Шаг 1: Заполнение личной информации о директоре</li>\n' +
+                '                    <li>Шаг 2: Заполнение информации об организации</li>\n' +
+                '                    <li>Шаг 3: Заполнение информации о магазине</li>\n' +
                 '                </ul>\n' +
                 '                <p>Вы можете попустить шаг 2 и шаг 3 нажав на кнопку "Пропустить" под формой ввода личных данных</p>\n' +
                 '                <p>В случае пропуска Ваша учетная запись не будет активирована!</p>\n' +
                 '                <p> </p>\n' +
-                '                <p>Настоятельно рекомендуем ознакомится с описание полей форм регистрации</p>\n' +
+                '                <p>Настоятельно рекомендуем ознакомиться с описанием полей форм регистрации</p>\n' +
                 '<div class=text-left>';
             set_mask();
             create_modal_message(pre_register_msg);
@@ -365,8 +365,8 @@
                         rule_field_first_step = '<h3>Шаг 1:</h3>\n' +
                             '<h4>Регистрация директора</h4>'+
                             '<ul class="text-left" style="list-style: none"> \n' +
-                            ' <li><span style="font-size: 16px " class="badge badge-danger">"Фамилия Имя Отчество"</span> - длина от 6 символов, необходимо указать поную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
-                            ' <li><span style="font-size: 16px " class="badge badge-danger">"Email"</span> - от 9 до 32 символов, необходимо указать достовернный электронный адрес, например: "example@mail.ru, example@gmail.com"</li>\n' +
+                            ' <li><span style="font-size: 16px " class="badge badge-danger">"Фамилия Имя Отчество"</span> - длина от 6 символов, необходимо указать полную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
+                            ' <li><span style="font-size: 16px " class="badge badge-danger">"Email"</span> - от 9 до 32 символов, необходимо указать достоверный электронный адрес, например: "example@mail.ru, example@gmail.com"</li>\n' +
                             ' <li><span style="font-size: 16px " class="badge badge-danger">"Логин"</span> - от 3 до 32 символов, латинские строчные и заглавные буквы, цифры, тире(-) и нижнее подчеркивание(_), например: "login, login1, Login1, login-1, login_1"</li>\n' +
                             ' <li><span style="font-size: 16px " class="badge badge-danger">"Пароль"</span> - от 6 до 32 символов, цифры, латинские строчные и заглавные буквы, например: "password, password1, Password111"</li>\n' +
                             '</ul>';
@@ -377,7 +377,7 @@
                             '<h4>Регистрация организации</h4>'+
                             '<ul class="text-left" style="list-style: none"> \n' +
                             ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"Название организации"</span> - в зависимости от выбранного типа формируется название для ООО или ИП, название для ООО должно быть длиной от 2 символов, без кавычек, название для ИП формируется автоматически, исходя из ФИО руководителя, например: Рога и копыта, Иванов Иван Иванович</li>\n' +
-                            ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"ФИО руководителя"</span> - длина от 6 символов, необходимо указать поную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
+                            ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"ФИО руководителя"</span> - длина от 6 символов, необходимо указать полную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
                             ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"ИНН/КПП(ИНН)"</span> - для ООО формируется поле вида ИНН/КПП, длина ИНН - 10 символов, длина КПП - 9 символов, для ИП формируется поле ИНН длинной в 12 симвоов, например: ИНН/КПП - 1234567891/123456789, ИНН - 123456789112"</li>\n' +
                             ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"ОГРН(ОГРНИП)"</span> - для ООО фомируется ОГРН длинной 13 символов, для ИП - 15 символов, например: ОГРН - 1234567891123, ОГРНИП - 123456789112345"</li>\n' +
                             ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"Юридический адрес"</span> - необходимо указать адрес регистрации Вашей организации или ИП, рекомендуется писать адрес в виде: область, город, улица, дом/корпус/здание, например: Ростовская область, город Ростов-на-дону, улица Ленина, дом 1; Московская обл., г. Москва, ул. Ленина, к. 1"</li>\n' +
@@ -452,7 +452,7 @@
                         field_reaction(form.confirm_password.field, 'Пароли не совпадают', false);
                         let valid_result =
                             {
-                                full_name: {valid: valid_field(form.full_name.value, {type: 'string', min_length: '5', regexp: /^([А-Я][а-я]{1,}[-][А-Я][а-я]{1,}|[А-Я][а-я]{1,})\s[А-Я][а-я]{1,}\s[А-Я][а-я]{1,}$/ }), field: form.full_name.field},
+                                full_name: {valid: valid_field(form.full_name.value, {type: 'string', min_length: '5', regexp: /^([А-Я][а-я]{1,}[-][А-Я][а-я]{1,}|[А-Я][а-я]{1,})\s[А-Я][а-я]{1,}\s[А-Я][а-я]{1,}|([А-Я][а-я]{1,}[-][А-Я][а-я]{1,}|[А-Я][а-я]{1,})\s[А-Я][а-я]{1,}$/}), field: form.full_name.field},
                                 email: {valid: valid_field(form.email.value, {type: 'string', min_length: '6', max_length: 254, regexp: /^([A-Za-z0-9_\.-]+\@[\dA-Za-z\.-]+\.[A-Za-z\.]{2,6})$/}), field: form.email.field},
                                 login: {valid: valid_field(form.login.value, {type: 'string', min_length: '3', max_length: '32'}), field: form.login.field},
                                 password: {valid: valid_field(form.password.value, {type: 'string', min_length: '6', max_length: '32'}), field: form.password.field}
@@ -474,15 +474,15 @@
                             let rule_field_first_step = '<h3>Шаг 1:</h3>\n' +
                                 '<h4>Регистрация директора</h4>'+
                                 '<ul class="text-left" style="list-style: none"> \n' +
-                                ' <li><span style="font-size: 16px " class="badge badge-danger">"Фамилия Имя Отчество"</span> - длина от 6 символов, необходимо указать поную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
-                                ' <li><span style="font-size: 16px " class="badge badge-danger">"Email"</span> - от 9 до 32 символов, необходимо указать достовернный электронный адрес, например: "example@mail.ru, example@gmail.com"</li>\n' +
+                                ' <li><span style="font-size: 16px " class="badge badge-danger">"Фамилия Имя Отчество"</span> - длина от 6 символов, необходимо указать полную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
+                                ' <li><span style="font-size: 16px " class="badge badge-danger">"Email"</span> - от 9 до 32 символов, необходимо указать достоверный электронный адрес, например: "example@mail.ru, example@gmail.com"</li>\n' +
                                 ' <li><span style="font-size: 16px " class="badge badge-danger">"Логин"</span> - от 3 до 32 символов, латинские строчные и заглавные буквы, цифры, тире(-) и нижнее подчеркивание(_), например: "login, login1, Login1, login-1, login_1"</li>\n' +
                                 ' <li><span style="font-size: 16px " class="badge badge-danger">"Пароль"</span> - от 6 до 32 символов, цифры, латинские строчные и заглавные буквы, например: "password, password1, Password111"</li>\n' +
                                 '</ul>';
                             Swal.fire({
                                 toast: true,
                                 timer: 10000,
-                                html: '<span style="color: #fff; font-weight: 700">Возникли проблемы при заполнении формы? Прочтите <span class="badge badge-primary rule-field" style="cursor: pointer; font-size: 16px">парвила заполнения полей</span></span>',
+                                html: '<span style="color: #fff; font-weight: 700">Возникли проблемы при заполнении формы? Прочтите <span class="badge badge-primary rule-field" style="cursor: pointer; font-size: 16px">правила заполнения полей</span></span>',
                                 background: '#dc3545',
                                 position: 'top-end',
                                 showConfirmButton: false,
@@ -535,7 +535,7 @@
                     };
                     let error = false;
                     let valid_result = {
-                        organization_name: {valid: valid_field(form.organization_name.value, {type: 'string', min_length: '2', regexp: /^(ООО\s["][A-ZА-Я0-9].+(\s.+|)["]|ИП\s[А-Я][а-я]+\s[А-Я][а-я]+\s[А-Я][а-я]+)$/ }), field: form.organization_name.field},
+                        organization_name: {valid: valid_field(form.organization_name.value, {type: 'string', min_length: '2', regexp: /^(ООО\s["][A-ZА-Я0-9].+(\s.+|)["]|ООО\s[A-ZА-Я0-9].+(\s.+|)|ИП\s[А-Я][а-я]+\s[А-Я][а-я]+\s[А-Я][а-я]+)$/ }), field: form.organization_name.field},
                         director_name: {valid: valid_field(form.director_name.value, {type: 'string', min_length: '6', regexp: /^([А-Я][а-я]{1,}[-][А-Я][а-я]{1,}|[А-Я][а-я]{1,})\s[А-Я][а-я]{1,}\s[А-Я][а-я]{1,}$/ }), field: form.director_name.field},
                         inn_kpp: {valid: valid_field(form.inn_kpp.value, {type: 'string', min_length: 12, max_length: 20, regexp: /^[0-9]{12}|([0-9]{10}\/[0-9]{9})$/ }), field: form.inn_kpp.field},
                         ogrn: {valid: valid_field(form.ogrn.value, {type: 'string', min_length: 13, max_length: 15, regexp: /^[0-9]{13,15}$/ }), field: form.ogrn.field},
@@ -564,7 +564,7 @@
                             '<h4>Регистрация организации</h4>'+
                             '<ul class="text-left" style="list-style: none"> \n' +
                             ' <li style="margin-bottom: 5px"><span style="font-size: 16px " class="badge badge-danger">"Название организации"</span> - в зависимости от выбранного типа формируется название для ООО или ИП, название для ООО должно быть длиной от 2 символов, без кавычек, название для ИП формируется автоматически, исходя из ФИО руководителя, например: Рога и копыта, Иванов Иван Иванович</li>\n' +
-                            ' <li style="margin-bottom: 5px"><span style="font-size: 16px " class="badge badge-danger">"ФИО руководителя"</span> - длина от 6 символов, необходимо указать поную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
+                            ' <li style="margin-bottom: 5px"><span style="font-size: 16px " class="badge badge-danger">"ФИО руководителя"</span> - длина от 6 символов, необходимо указать полную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
                             ' <li style="margin-bottom: 5px"><span style="font-size: 16px " class="badge badge-danger">"ИНН/КПП(ИНН)"</span> - для ООО формируется поле вида ИНН/КПП, длина ИНН - 10 символов, длина КПП - 9 символов, для ИП формируется поле ИНН длинной в 12 симвоов, например: ИНН/КПП - 1234567891/123456789, ИНН - 123456789112"</li>\n' +
                             ' <li style="margin-bottom: 5px"><span style="font-size: 16px " class="badge badge-danger">"ОГРН(ОГРНИП)"</span> - для ООО фомируется ОГРН длинной 13 символов, для ИП - 15 символов, например: ОГРН - 1234567891123, ОГРНИП - 123456789112345"</li>\n' +
                             ' <li style="margin-bottom: 5px"><span style="font-size: 16px " class="badge badge-danger">"Юридический адрес"</span> - необходимо указать адрес регистрации Вашей организации или ИП, рекомендуется писать адрес в виде: область, город, улица, дом/корпус/здание, например: Ростовская область, город Ростов-на-дону, улица Ленина, дом 1; Московская обл., г. Москва, ул. Ленина, к. 1"</li>\n' +
@@ -578,7 +578,7 @@
                         Swal.fire({
                             toast: true,
                             timer: 10000,
-                            html: '<span style="color: #fff; font-weight: 700">Возникли проблемы при заполнении формы? Прочтите <span class="badge badge-primary rule-field" style="cursor: pointer; font-size: 16px">парвила заполнения полей</span></span>',
+                            html: '<span style="color: #fff; font-weight: 700">Возникли проблемы при заполнении формы? Прочтите <span class="badge badge-primary rule-field" style="cursor: pointer; font-size: 16px">правила заполнения полей</span></span>',
                             background: '#dc3545',
                             position: 'top-end',
                             showConfirmButton: false,
@@ -627,10 +627,10 @@
                     field_reaction(form.confirm_password.field, 'Пароли не совпадают', false);
                     let valid_result =
                     {
-                        full_name: {valid: valid_field(form.full_name.value, {type: 'string', min_length: '5', regexp: /^([А-Я][а-я]{1,}[-][А-Я][а-я]{1,}|[А-Я][а-я]{1,})\s[А-Я][а-я]{1,}\s[А-Я][а-я]{1,}$/}), field: form.full_name.field},
+                        full_name: {valid: valid_field(form.full_name.value, {type: 'string', min_length: '5', regexp: /^([А-Я][а-я]{1,}[-][А-Я][а-я]{1,}|[А-Я][а-я]{1,})\s[А-Я][а-я]{1,}\s[А-Я][а-я]{1,}|([А-Я][а-я]{1,}[-][А-Я][а-я]{1,}|[А-Я][а-я]{1,})\s[А-Я][а-я]{1,}$/}), field: form.full_name.field},
                         email: {valid: valid_field(form.email.value, {type: 'string', min_length: '6', max_length: 254, regexp: /^([A-Za-z0-9_\.-]+\@[\dA-Za-z\.-]+\.[A-Za-z\.]{2,6})$/}), field: form.email.field},
-                        login: {valid: valid_field(form.login.value, {type: 'string', min_length: '3', max_length: '32', regexp: /^([a-z]|[A-Z][a-z]|[A-Z])+([-_]?[a-z0-9]+){0,2}$/}), field: form.login.field},
-                        password: {valid: valid_field(form.password.value, {type: 'string', min_length: '6', max_length: '32', regexp: /^([a-z]|[A-Z][a-z]|[A-Z])+([-_]?[a-z0-9]+){0,2}$/}), field: form.password.field}
+                        login: {valid: valid_field(form.login.value, {type: 'string', min_length: '5', max_length: '32', regexp: /^([a-z]|[A-Z][a-z]|[A-Z])+([-_]?[a-z0-9]+){0,2}$/}), field: form.login.field},
+                        password: {valid: valid_field(form.password.value, {type: 'string', min_length: '6', max_length: '32'}), field: form.password.field}
                     };
                     let error = false;
                     $.each(valid_result, function (key, item) {
@@ -722,7 +722,7 @@
                         Swal.fire({
                             toast: true,
                             timer: 10000,
-                            html: '<span style="color: #fff; font-weight: 700">Возникли проблемы при заполнении формы? Прочтите <span class="badge badge-primary rule-field" style="cursor: pointer; font-size: 16px">парвила заполнения полей</span></span>',
+                            html: '<span style="color: #fff; font-weight: 700">Возникли проблемы при заполнении формы? Прочтите <span class="badge badge-primary rule-field" style="cursor: pointer; font-size: 16px">правила заполнения полей</span></span>',
                             background: '#dc3545',
                             position: 'top-end',
                             showConfirmButton: false,
@@ -734,8 +734,8 @@
                                         html:
                                             '<h3>Шаг 1:</h3>\n' +
                                             '<ul class="text-left" style="list-style: none"> \n' +
-                                            ' <li><span style="font-size: 16px " class="badge badge-danger">"Фамилия Имя Отчество"</span> - длина от 5 символов, необходимо указать поную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
-                                            ' <li><span style="font-size: 16px " class="badge badge-danger">"Email"</span> - от 9 до 32 символов, необходимо указать достовернный электронный адрес, например: "example@mail.ru, example@gmail.com"</li>\n' +
+                                            ' <li><span style="font-size: 16px " class="badge badge-danger">"Фамилия Имя Отчество"</span> - длина от 5 символов, необходимо указать полную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
+                                            ' <li><span style="font-size: 16px " class="badge badge-danger">"Email"</span> - от 9 до 32 символов, необходимо указать достоверный электронный адрес, например: "example@mail.ru, example@gmail.com"</li>\n' +
                                             ' <li><span style="font-size: 16px " class="badge badge-danger">"Логин"</span> - от 3 до 32 символов, латинские строчные и заглавные буквы, цифры, тире(-) и нижнее подчеркивание(_), например: "login, login1, Login1, login-1, login_1"</li>\n' +
                                             ' <li><span style="font-size: 16px " class="badge badge-danger">"Пароль"</span> - от 6 до 32 символов, цифры, латинские строчные и заглавные буквы, например: "password, password1, Password111"</li>\n' +
                                             '</ul>',
@@ -862,8 +862,8 @@
                         $('.step-title').text('Шаг 1: Данные о директоре');
                         rule_field_first_step = '<h3>Шаг 1:</h3>\n' +
                         '<ul class="text-left" style="list-style: none"> \n' +
-                        ' <li><span style="font-size: 16px " class="badge badge-danger">"Фамилия Имя Отчество"</span> - длина от 5 символов, необходимо указать поную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
-                        ' <li><span style="font-size: 16px " class="badge badge-danger">"Email"</span> - от 9 до 32 символов, необходимо указать достовернный электронный адрес, например: "example@mail.ru, example@gmail.com"</li>\n' +
+                        ' <li><span style="font-size: 16px " class="badge badge-danger">"Фамилия Имя Отчество"</span> - длина от 5 символов, необходимо указать полную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
+                        ' <li><span style="font-size: 16px " class="badge badge-danger">"Email"</span> - от 9 до 32 символов, необходимо указать достоверный электронный адрес, например: "example@mail.ru, example@gmail.com"</li>\n' +
                         ' <li><span style="font-size: 16px " class="badge badge-danger">"Логин"</span> - от 3 до 32 символов, латинские строчные и заглавные буквы, цифры, тире(-) и нижнее подчеркивание(_), например: "login, login1, Login1, login-1, login_1"</li>\n' +
                         ' <li><span style="font-size: 16px " class="badge badge-danger">"Пароль"</span> - от 6 до 32 символов, цифры, латинские строчные и заглавные буквы, например: "password, password1, Password111"</li>\n' +
                         '</ul>';
@@ -876,7 +876,7 @@
                             '<h4>Регистрация организации</h4>'+
                             '<ul class="text-left" style="list-style: none"> \n' +
                             ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"Название организации"</span> - в зависимости от выбранного типа формируется название для ООО или ИП, название для ООО должно быть длиной от 2 символов, без кавычек, название для ИП формируется автоматически, исходя из ФИО руководителя, например: Рога и копыта, Иванов Иван Иванович</li>\n' +
-                            ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"ФИО руководителя"</span> - длина от 6 символов, необходимо указать поную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
+                            ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"ФИО руководителя"</span> - длина от 6 символов, необходимо указать полную фамилию, имя и отчество, например: "Иванов Иван Иванович, Петов Петр Петрович"</li>\n' +
                             ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"ИНН/КПП(ИНН)"</span> - для ООО формируется поле вида ИНН/КПП, длина ИНН - 10 символов, длина КПП - 9 символов, для ИП формируется поле ИНН длинной в 12 симвоов, например: ИНН/КПП - 1234567891/123456789, ИНН - 123456789112"</li>\n' +
                             ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"ОГРН(ОГРНИП)"</span> - для ООО фомируется ОГРН длинной 13 символов, для ИП - 15 символов, например: ОГРН - 1234567891123, ОГРНИП - 123456789112345"</li>\n' +
                             ' <li style="margin-bottom: 15px"><span style="font-size: 16px " class="badge badge-danger">"Юридический адрес"</span> - необходимо указать адрес регистрации Вашей организации или ИП, рекомендуется писать адрес в виде: область, город, улица, дом/корпус/здание, например: Ростовская область, город Ростов-на-дону, улица Ленина, дом 1; Московская обл., г. Москва, ул. Ленина, к. 1"</li>\n' +
@@ -905,7 +905,7 @@
                     Swal.fire({
                         toast: true,
                         timer: 10000,
-                        html: '<span style="color: #fff; font-weight: 700">Возникли проблемы при заполнении формы? Прочтите <span class="badge badge-primary rule-field" style="cursor: pointer; font-size: 16px">парвила заполнения полей</span></span>',
+                        html: '<span style="color: #fff; font-weight: 700">Возникли проблемы при заполнении формы? Прочтите <span class="badge badge-primary rule-field" style="cursor: pointer; font-size: 16px">правила заполнения полей</span></span>',
                         background: '#dc3545',
                         position: 'top-end',
                         showConfirmButton: false,

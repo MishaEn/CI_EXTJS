@@ -11,22 +11,23 @@
                 <ol>
                     <li>Вы недавно зарегистрировались</li>
                     <li>При проверке аккаунта были найдены ошибки</li>
-                    <li></li>
                 </ol>
-                <p>
-                    Для разблокировки аккаунта обратитесь в техническую поддержку
-                </p>
+                Ваш аккаунт будет активирован в ближайшее время.
             </div>
             <div class="card-footer">
                 <div class="row">
                     <div class="col-4">
                         <button class="btn-danger btn btn-block">Назад</button>
                     </div>
-                    <div class="col-4 offset-4">
-                        <button class="btn-success btn btn-block">Техподдержка</button>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.btn', function (e) {
+                document.location.href='/login'
+            })
+        })
+    </script>
 </div>

@@ -43,8 +43,8 @@
 
                 let valid_status =
                 {
-                    login: {valid: valid_field(form.login.value, {type: 'string', min_length: '5', max_length: '15'}), field: form.login.field},
-                    password: {valid: valid_field(form.password.value, {type: 'string', min_length: '5', max_length: '15'}), field: form.password.field}
+                    login: {valid: valid_field(form.login.value, {type: 'string', min_length: '5', max_length: '32'}), field: form.login.field},
+                    password: {valid: valid_field(form.password.value, {type: 'string', min_length: '5', max_length: '32'}), field: form.password.field}
                 };
                 if(!valid_status.login.valid.error && !valid_status.password.valid.error){
                     let message = '';

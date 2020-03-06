@@ -20,7 +20,7 @@
             <div class="card-footer">
                 <div class="row">
                     <div class="col-4">
-                        <button class="btn-danger btn btn-block">Назад</button>
+                        <button class="btn-danger btn back btn-block">Назад</button>
                     </div>
                     <div class="col-4 offset-4">
                         <button class="btn-success btn btn-block">Техподдержка</button>
@@ -29,4 +29,11 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.back', function (e) {
+                document.location.href='/login'
+            })
+        })
+    </script>
 </div>

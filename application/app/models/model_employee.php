@@ -2,7 +2,7 @@
     function get_employee($id = null){
         $pdo = get_pdo();
         if(is_null($id)){
-            $stm = $pdo->prepare('SELECT u.full_name, u.login, u.email, u.status, e.director_id FROM users u INNER JOIN employee e on u.id = e.user_id');
+            $stm = $pdo->prepare('SELECT e.id, u.full_name, u.login, u.email, u.status, e.director_id FROM users u INNER JOIN employee e on u.id = e.user_id');
             if($stm->execute()){
                 $data = $stm->fetchAll();
                 if(empty($data)){
@@ -17,7 +17,7 @@
             }
         }
         else{
-            $stm = $pdo->prepare('SELECT u.full_name, u.login, u.email, u.status FROM users u INNER JOIN employee e on u.id = e.user_id  WHERE e.director_id = :id');
+            $stm = $pdo->prepare('SELECT e.id, u.full_name, u.login, u.email, u.status FROM users u INNER JOIN employee e on u.id = e.user_id  WHERE e.director_id = :id');
             $stm->bindValue(':id', $id);
             if($stm->execute()){
                 $data = $stm->fetchAll();
@@ -70,6 +70,28 @@
         $stm = $pdo->prepare('SELECT e.id, u.full_name, u.login, u.email, u.status, e.director_id FROM users u INNER JOIN employee e on u.id = e.user_id where director_id = 248 ORDER BY e.id desc LIMIT 1');
         if($stm->execute()){
             $data = $stm->fetch();
+            if(empty($data)){
+                $response = ['error' => true, 'status' => 'fetch error'];
+            }
+            else{
+                $response = ['error' => false, 'status' => 'success','data' => $data];
+            }
+        }
+        else{
+            $response = ['error' => true, 'status' => 'execute error'];
+        }
+        return $response;
+    }
+
+    function get_employee_status($list, $value){
+        $pdo = get_pdo();
+        $stm = $pdo->prepare('SELECT u.status FROM users u INNER JOIN employee e on u.id = e.user_id where e.id IN ('.$list.')');
+        $arr = explode(',', $list);
+        foreach($arr as $key => $item){
+            $stm->bindValue($item, $value[$key]);
+        }
+        if($stm->execute()){
+            $data = $stm->fetchAll();
             if(empty($data)){
                 $response = ['error' => true, 'status' => 'fetch error'];
             }

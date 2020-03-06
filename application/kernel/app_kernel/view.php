@@ -42,12 +42,23 @@
             }
         }
     }
-    function element_loader($element_name, $data = null){
-        if(file_exists(TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$_SESSION['app']['submodule_name'].'/element_'.$element_name.'/element_'.$element_name.'.php')){
-            include_once TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$_SESSION['app']['submodule_name'].'/element_'.$element_name.'/element_'.$element_name.'.php';
+    function element_loader($element_name, $folder = null, $data = null){
+        if(is_null($folder)){
+            if(file_exists(TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$_SESSION['app']['submodule_name'].'/element_'.$element_name.'/element_'.$element_name.'.php')){
+
+                include_once TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$_SESSION['app']['submodule_name'].'/element_'.$element_name.'/element_'.$element_name.'.php';
+            }
+            else{
+                return;
+            }
         }
         else{
-            return;
+            if(file_exists(TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$folder.'/element_'.$element_name.'/element_'.$element_name.'.php')){
+                include_once TEMPLATE_ROOT.$_SESSION['app']['template_name'].'/module_'.$_SESSION['app']['module_name'].'/submodule_'.$folder.'/element_'.$element_name.'/element_'.$element_name.'.php';
+            }
+            else{
+                return;
+            }
         }
     }
     function modal_loader($modal_name, $data = null){

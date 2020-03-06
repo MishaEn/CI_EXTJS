@@ -33,11 +33,11 @@
                             <table class="table table-borderless table-hover">
                                 <thead>
                                 <tr>
-                                    <th class="col-3" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>ФИО</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-3" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Логин</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-2" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Email</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-2" style="border: 1px solid #dee2e6"><div class="row"><div class="col-9"><span>Статус</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-1"></th>
+                                    <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>ФИО</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Логин</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Email</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-9"><span>Статус</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class=""></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -110,34 +110,34 @@
                             <table class="table table-borderless table-hover">
                                 <thead>
                                 <tr>
-                                    <th class="col-3" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>ФИО</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-3" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Логин</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-2" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Email</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-2" style="border: 1px solid #dee2e6"><div class="row"><div class="col-9"><span>Статус</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
-                                    <th class="col-1"></th>
+                                    <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>ФИО</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Логин</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Email</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-9"><span>Статус</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                    <th class=""></th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
                                 <?php for ($i = 1; $i<= 1; $i++):?>
                                     <?php foreach($data['data'] as $item):?>
-                                        <tr class="show">
+                                        <tr class="show" data-id="<?php echo $item['id'];?>">
                                             <td  style="border: 1px solid #dee2e6"><span data-modal = "employee" class="pseudo-link"><?php echo $item['full_name'];?></span><input type="text" value="<?php echo $item['id'];?>" hidden></td>
                                             <td  style="border: 1px solid #dee2e6"><span><?php echo $item['login'];?></span><input type="text" value="<?php echo printable($item).$item['id'];?>" hidden></td>
                                             <td class="" style="border: 1px solid #dee2e6"><span><?php echo $item['email'];?></span><input type="text" value="<?php echo $item['director_id'];?>" hidden></td>
                                             <?php switch($item['status']):
                                                 case 0:?>
-                                                    <td class="text-center" style="border: 1px solid #dee2e6; background: #fd7e14; color: #fff; font-weight: 700;">Не активирован</td>
+                                                    <td class="text-center" data-status="0" style="border: 1px solid #dee2e6; background: #fd7e14; color: #fff; font-weight: 700;">Не активирован</td>
                                                 <?php break; case 1:?>
-                                                    <td class="text-center" style="border: 1px solid #dee2e6; background: #28a745; color: #fff; font-weight: 700;">Активирован</td>
+                                                    <td class="text-center" data-status="1" style="border: 1px solid #dee2e6; background: #28a745; color: #fff; font-weight: 700;">Активирован</td>
                                                 <?php break; case 2:?>
-                                                    <td class="text-center" style="border: 1px solid #dee2e6; background: #6c757d; color: #fff; font-weight: 700;">Заблокирован</td>
+                                                    <td class="text-center" data-status="2" style="border: 1px solid #dee2e6; background: #6c757d; color: #fff; font-weight: 700;">Заблокирован</td>
                                                 <?php break; case 3:?>
-                                                    <td class="text-center" style="border: 1px solid #dee2e6; background: #DC3545; color: #fff; font-weight: 700;">Запрос на удаление</td>
+                                                    <td class="text-center" data-status="3" style="border: 1px solid #dee2e6; background: #DC3545; color: #fff; font-weight: 700;">Запрос на удаление</td>
                                                 <?php break; case 4:?>
-                                                    <td class="text-center" style="border: 1px solid #dee2e6; background: #6c757d; color: #fff; font-weight: 700;">Запрос на блокировку</td>
+                                                    <td class="text-center" data-status="4" style="border: 1px solid #dee2e6; background: #6c757d; color: #fff; font-weight: 700;">Запрос на блокировку</td>
                                                 <?php break; case 5:?>
-                                                    <td class="text-center" style="border: 1px solid #dee2e6; background: #6c757d; color: #fff; font-weight: 700;">На модерации</td>
+                                                    <td class="text-center" data-status="5" style="border: 1px solid #dee2e6; background: #6c757d; color: #fff; font-weight: 700;">На модерации</td>
                                                 <?php break;
                                             endswitch;?>
                                             <td style="border: 1px solid #dee2e6" class="text-center">
@@ -207,66 +207,103 @@
     <script>
         $(document).ready(function () {
             setInterval(function () {
-                let id_list =
+                let id_list = '';
+                $('.show').each(function (key, item) {
+                    id_list = id_list+','+$(item).attr('data-id')
+                });
                 $.ajax({
-                    url: '/employee/check_check_status',
+                    url: '/employee/check_employee_status',
                     method: 'post',
                     dataType: 'json',
-                    data: {id: id_list,
+                    data: {id: id_list.substr(1)},
                     success: function (data) {
                         let color;
                         let status;
                         if(!data.error) {
-                            switch (data.data) {
-                                case 1:
-                                    color = '#28a745';
-                                    status = 'Активирована';
-                                    disabled_edit_icon.css({'color': '#28a745', cursor: 'pointer'}).attr('data-type', 'checked-edit');
-                                    disabled_block_icon.css({'color': '#333333', cursor: 'pointer'}).attr('data-type', 'checked-block');
-                                    disabled_delete_icon.css({'color': '#DC3545', cursor: 'pointer'}).attr('data-type', 'checked-delete');
-                                    break;
-                                case 2:
-                                    edit_icon.css({'color': '#6c757d', cursor: 'default'}).attr('data-type', 'disabled-edit');
-                                    delete_icon.css({'color': '#6c757d', cursor: 'default'}).attr('data-type', 'disabled-delete');
-                                    disabled_block_icon.css({'color': '#333333', cursor: 'pointer'}).attr('data-type', 'checked-block');
-                                    color = '#6c757d';
-                                    status = 'Заблокирована';
-                                    break;
-                                case 0:
-                                    color = '#ffc107';
-                                    status = 'Не активирована';
-                                    disabled_edit_icon.css({'color': '#28a745', cursor: 'pointer'}).attr('data-type', 'checked-edit');
-                                    disabled_block_icon.css({'color': '#333333', cursor: 'pointer'}).attr('data-type', 'checked-block');
-                                    disabled_delete_icon.css({'color': '#DC3545', cursor: 'pointer'}).attr('data-type', 'checked-delete');
-                                    break;
-                                case 3:
-                                    color = '#DC3545';
-                                    status = 'Запрос на удаление';
-                                    edit_icon.css({'color': '#6c757d', cursor: 'default'}).attr('data-type', 'disabled-edit');
-                                    block_icon.css({'color': '#6c757d', cursor: 'default'}).attr('data-type', 'disabled-block');
-                                    disabled_delete_icon.css({'color': '#DC3545', cursor: 'pointer'}).attr('data-type', 'checked-delete');
-                                    break;
-                                case 4:
-                                    color = '#6c757d';
-                                    status = 'Запрос на блокировку';
-                                    edit_icon.css({'color': '#6c757d', cursor: 'default'}).attr('data-type', 'disabled-edit');
-                                    delete_icon.css({'color': '#6c757d', cursor: 'default'}).attr('data-type', 'disabled-delete');
-                                    disabled_block_icon.css({'color': '#333333', cursor: 'pointer'}).attr('data-type', 'checked-block');
-                                    break;
-                                case 5:
-                                    color = '#6c757d';
-                                    status = 'На модерации';
-                                    disabled_edit_icon.css({'color': '#28a745', cursor: 'pointer'}).attr('data-type', 'checked-edit');
-                                    disabled_block_icon.css({'color': '#333333', cursor: 'pointer'}).attr('data-type', 'checked-block');
-                                    disabled_delete_icon.css({'color': '#DC3545', cursor: 'pointer'}).attr('data-type', 'checked-delete');
-                                    break;
-                            }
-                            $(status_title).css('color', color).text(status)
+                            $.each(data.data, function (key, item) {
+                                switch (item.status) {
+                                    case 1:
+                                        color = '#28a745';
+                                        status = 'Активирована';
+                                        break;
+                                    case 2:
+                                        color = '#6c757d';
+                                        status = 'Заблокирована';
+                                        break;
+                                    case 0:
+                                        color = '#ffc107';
+                                        status = 'Не активирована';
+                                        break;
+                                    case 3:
+                                        color = '#DC3545';
+                                        status = 'Запрос на удаление';
+                                        break
+                                    case 4:
+                                        color = '#6c757d';
+                                        status = 'Запрос на блокировкку';
+                                        break;
+                                    case 5:
+                                        color = '#6c757d';
+                                        status = 'На модерации';
+                                        break;
+                                }
+                                let td =  $('.show[data-id="'+item.id+'"]').children()[3];
+                                $(td).css('background', color).text(status);
+                                console.log(item.id)
+                            })
                         }
                     }
                 })
-            },2500);
-        })
+            },1000*30);
+        });
+/*
+        director_handler.on('click', '.index-button', function (event) {
+            let prev_button = $('.previous');
+            let next_button = $('.next');
+            let page_number =  $(event.target).attr('data-dt-idx');
+            $(prev_button).attr('data-dt-idx', --page_number);
+            $(next_button).attr('data-dt-idx', ++page_number);
+            $('.previous a').attr('data-dt-idx', --page_number);
+            $('.next a').attr('data-dt-idx', ++page_number);
+            $('.active').removeClass('active');
+
+            if($(event.target).hasClass('paginate_button')){
+                $(event.target).addClass('active');
+            }
+            else{
+                $(event.target).parent().addClass('active');
+            }
+            let start_view_count;
+            let end_view_count;
+            if( $(event.target).attr('data-dt-idx')===1){
+                start_view_count = 0;
+                end_view_count = 10;
+            }
+            else {
+                start_view_count = ($(event.target).attr('data-dt-idx')-1)*10;
+                end_view_count = start_view_count + 10;
+            }
+            let span_start = start_view_count+1;
+            let span_end;
+            if(row_count > end_view_count){
+                span_end = end_view_count;
+            }
+            else{
+                span_end = row_count;
+            }
+            $.each(row_list, function (key, item) {
+                if(key === 1){
+                    $(this).show();
+                }
+                if(key >= start_view_count && key < end_view_count){
+                    $('.dataTables_info').text('Показано от '+span_start+' до '+span_end+' из '+row_count+' записей');
+                    $(this).show();
+                }
+                else{
+                    $(this).hide();
+                }
+            });
+        });*/
     </script>
 </div>
 
