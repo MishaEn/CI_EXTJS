@@ -3,11 +3,10 @@
         $pdo = get_pdo();
         if(is_null($id)){
             $stm = $pdo->prepare('SELECT u.code, nox.*
-                                                FROM n_order_x nox
-                                                INNER join users u on nox.n_code_ord = u.id
-                                                WHERE YEAR(nox.n_date_con)=:date AND MONTH(nox.n_date_con)=:month ORDER BY nox.n_order_ne DESC LIMIT 20');
+                                            FROM n_order_x nox
+                                            INNER join users u on nox.n_code_ord = u.id
+                                            WHERE YEAR(nox.n_date_con)=:date ORDER BY nox.n_order_ne DESC LIMIT 9');
             $stm->bindValue(':date', date('Y'));
-            $stm->bindValue(':month', date('m'));
             if($stm->execute()){
                 $data = $stm->fetchAll();
                 if(empty($data)){
@@ -23,9 +22,9 @@
         }
         else{
             $stm = $pdo->prepare('SELECT u.code, nox.*
-                                                FROM n_order_x nox
-                                                INNER join users u on nox.n_code_ord = u.id
-                                                WHERE nox.n_code_ord = :id ORDER BY nox.n_order_ne DESC');
+                                            FROM n_order_x nox
+                                            INNER join users u on nox.n_code_ord = u.id
+                                            WHERE nox.n_code_ord = :id ORDER BY nox.n_order_ne DESC');
             $stm->bindValue(':id', $id);
             if($stm->execute()){
                 $data = $stm->fetchAll();
@@ -42,30 +41,37 @@
         }
         return $response;
     }
-    function get_all_order($year = null, $month = null){
+    function get_all_order($list, $year = null){
         $pdo = get_pdo();
-
+        $stm = $pdo->prepare('SELECT u.code, nox.*
+                                        FROM n_order_x nox
+                                        INNER join users u on nox.n_code_ord = u.id
+                                        WHERE YEAR(nox.n_date_con)=:year AND
+                                        order_id != :id_0 and 
+                                        order_id != :id_1 and 
+                                        order_id != :id_2 and 
+                                        order_id != :id_3 and 
+                                        order_id != :id_4 and 
+                                        order_id != :id_5 and 
+                                        order_id != :id_6 and 
+                                        order_id != :id_7 and 
+                                        order_id != :id_8 
+                                        ORDER BY nox.n_order_ne DESC ');
         if(!is_null($year)){
-            $stm = $pdo->prepare('SELECT u.code, nox.*
-                                            FROM n_order_x nox
-                                            INNER join users u on nox.n_code_ord = u.id
-                                            WHERE YEAR(nox.n_date_con)=:year AND MONTH(nox.n_date_con)=:month
-                                            ORDER BY nox.n_order_ne DESC 
-                                       ');
             $stm->bindValue(':year', $year);
-            $stm->bindValue(':month', $month);
         }
         else{
-            $stm = $pdo->prepare('SELECT u.code, nox.*
-                                            FROM n_order_x nox
-                                            INNER join users u on nox.n_code_ord = u.id
-                                            WHERE YEAR(nox.n_date_con)=:year AND MONTH(nox.n_date_con)=:month
-                                            ORDER BY nox.n_order_ne DESC 
-                                            LIMIT 20, 999999999
-                                       ');
             $stm->bindValue(':year', date('Y'));
-            $stm->bindValue(':month', date('m'));
         }
+        $stm->bindValue(':id_0', explode(',', $list)[0]);
+        $stm->bindValue(':id_1', explode(',', $list)[1]);
+        $stm->bindValue(':id_2', explode(',', $list)[2]);
+        $stm->bindValue(':id_3', explode(',', $list)[3]);
+        $stm->bindValue(':id_4', explode(',', $list)[4]);
+        $stm->bindValue(':id_5', explode(',', $list)[5]);
+        $stm->bindValue(':id_6', explode(',', $list)[6]);
+        $stm->bindValue(':id_7', explode(',', $list)[7]);
+        $stm->bindValue(':id_8', explode(',', $list)[8]);
         if($stm->execute()){
             $data = $stm->fetchAll();
             if(empty($data)){
@@ -91,9 +97,9 @@
         $pdo = get_pdo();
         if(is_null($id)){
             $sql = 'SELECT u.code, nox.*
-                        FROM n_order_x nox
-                        INNER join users u on nox.n_code_ord = u.id
-                        ORDER BY nox.'.$field.' '.$direction;
+                    FROM n_order_x nox
+                    INNER join users u on nox.n_code_ord = u.id
+                    ORDER BY nox.'.$field.' '.$direction;
             $stm = $pdo->prepare($sql);
             if($stm->execute()){
                 $data = $stm->fetchAll();
@@ -110,10 +116,10 @@
         }
         else{
             $sql = 'SELECT u.code, nox.*
-                        FROM n_order_x nox
-                        INNER join users u on nox.n_code_ord = u.id
-                        WHERE nox.n_code_ord = :id
-                        ORDER BY nox.'.$field.' '.$direction;
+                    FROM n_order_x nox
+                    INNER join users u on nox.n_code_ord = u.id
+                    WHERE nox.n_code_ord = :id
+                    ORDER BY nox.'.$field.' '.$direction;
             $stm = $pdo->prepare($sql);
             $stm->bindValue(':id', $id);
             if($stm->execute()){
@@ -134,11 +140,10 @@
 
     function update_order_status($id, $status){
         $pdo = get_pdo();
-        $sql = 'UPDATE n_order_x SET n_status=:status, updated_at = :date WHERE order_id=:id';
+        $sql = 'UPDATE n_order_x SET n_status=:status WHERE order_id=:id';
         $stm = $pdo->prepare($sql);
         $stm->bindValue(':id', $id);
         $stm->bindValue(':status', $status);
-        $stm->bindValue(':date',  date('Y-m-d H:i:s'));
         if($stm->execute()){
             $response = ['error' => false, 'status' => 'success'];
         }
@@ -186,6 +191,7 @@
                 PDO::ATTR_EMULATE_PREPARES   => false,
             ]);
             $sql = 'DELETE FROM n_order_x';
+            var_dump($data);
             $drop = $pdo2->prepare($sql);
             if($drop->execute()){
                 foreach($data as $item){
@@ -195,8 +201,8 @@
                         $n_con = $first[2].'-'.$first[1].'-'.$first[0];
                         $nmount = $second[2].'-'.$second[1].'-'.$second[0];
                         $sql = 'INSERT INTO `n_order_x`(order_id, n_order_se,  `n_order_ne`, `n_date_con`, `n_status`, `n_week`, `n_mount`, `n_code_ord`, `n_other`, `created_at`)
-                    VALUES
-                                                (:id, :oreder_se, :oreder_ne, :date_con, :status, :week, :mount, :code_ord, :other, :creadet)';
+                VALUES
+                                            (:id, :oreder_se, :oreder_ne, :date_con, :status, :week, :mount, :code_ord, :other, :creadet)';
                         $stm = $pdo2->prepare($sql);
                         $stm->bindValue(':id', $item['id']);
                         $stm->bindValue(':oreder_se', $item['n_order_se']);
@@ -208,15 +214,7 @@
                         $stm->bindValue(':code_ord', $item['n_code_ord']);
                         $stm->bindValue(':other', $item['n_other']);
                         $stm->bindValue(':creadet', $item['created_at']);
-
-                        try {
-                            $stm->execute();
-                        }
-                        catch (\PDOException $e) {
-                            if ($e->errorInfo[1] == 1062) {
-                                //The INSERT query failed due to a key constraint violation.
-                            }
-                        }
+                        $stm->execute();
                     }
                 }
             }
@@ -224,92 +222,4 @@
 
 
         return ['error' => false];
-    }
-
-    function update_shipping_order($id, $date, $week){
-        $pdo = get_pdo();
-        $sql = 'UPDATE n_order_x SET n_week=:week, n_mount=:mount, updated_at = :date WHERE order_id=:id';
-        $stm = $pdo->prepare($sql);
-        $stm->bindValue(':id', $id);
-        $stm->bindValue(':mount', $date);
-        $stm->bindValue(':week', $week);
-        $stm->bindValue(':date',  date('Y-m-d H:i:s'));
-        if($stm->execute()){
-            $response = ['error' => false, 'status' => 'success'];
-        }
-        else{
-            $response = ['error' => true, 'status' => 'execute error'];
-        }
-        return $response;
-    }
-
-    function get_new_order($now, $past){
-        $pdo = get_pdo();
-        $sql = 'SELECT order_id FROM n_order_x WHERE created_at BETWEEN :past and :now';
-        $stm = $pdo->prepare($sql);
-        $stm->bindValue(':past', $past);
-        $stm->bindValue(':now', $now);
-        if($stm->execute()){
-            $data = $stm->fetchAll();
-            if(empty($data)){
-                $response = ['error' => true, 'status' => 'fetch error'];
-            }
-            else{
-                $response = ['error' => false, 'status' => 'success','data' => $data];
-            }
-        }
-        else{
-            $response = ['error' => true, 'status' => 'execute error'];
-        }
-        return $response;
-    }
-
-    function get_updated_order(){
-        $pdo = get_pdo();
-        $sql = 'SELECT order_id, n_status, n_week, n_mount FROM n_order_x WHERE updated_at is not null ';
-        $stm = $pdo->prepare($sql);
-        if($stm->execute()){
-            $data = $stm->fetchAll();
-            if(empty($data)){
-                $response = ['error' => true, 'status' => 'fetch error'];
-            }
-            else{
-                $response = ['error' => false, 'status' => 'success','data' => $data];
-                foreach($data as $item){
-                    $sql = 'UPDATE n_order_x SET updated_at = null WHERE order_id=:id';
-                    $update = $pdo->prepare($sql);
-                    $update->bindValue(':id', $item['order_id']);
-                    $update->execute();
-                }
-            }
-        }
-        else{
-            $response = ['error' => true, 'status' => 'execute error'];
-        }
-        return $response;
-    }
-
-    function get_new_order_by_id($list){
-        $pdo = get_pdo();
-        $id_list = explode(',' , $list);
-        $inKeys = array_map(function($key){return ':var_'.$key;}, array_keys($id_list));
-        $placeholders = str_repeat ('?, ',  count ($id_list) - 1) . '?';
-        $stm = $pdo->prepare( 'SELECT u.code, nox.*
-                FROM n_order_x nox
-                INNER join users u on nox.n_code_ord = u.id
-                WHERE nox.order_id in ('.$placeholders.')
-                ORDER BY nox.n_order_ne DESC');
-        if($stm->execute($id_list)){
-            $data = $stm->fetchAll();
-            if(empty($data)){
-                $response = ['error' => true, 'status' => 'fetch error'];
-            }
-            else{
-                $response = ['error' => false, 'status' => 'success','data' => $data];
-            }
-        }
-        else{
-            $response = ['error' => true, 'status' => 'execute error'];
-        }
-        return $response;
     }

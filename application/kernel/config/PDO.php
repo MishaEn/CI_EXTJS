@@ -5,9 +5,9 @@
 
     }
     function get_pdo(){
-        $user = 'cl279370_admpnl';
-        $pass = 'GzBR8KeJ';
-        $dsn = pdo_connect( 'bitrix312.timeweb.ru', 'cl279370_admpnl');
+        $user = '';
+        $pass = '';
+        $dsn = pdo_connect( '', '');
         $opt = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
