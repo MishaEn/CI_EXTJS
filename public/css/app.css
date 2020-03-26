@@ -6,7 +6,20 @@ body{
 .filter-option-item:hover{
     background: #ccc;
 }
-
+.-current-{
+    color: #dc3545!important;
+}
+.datepicker--day-name{
+    color: #dc3545!important;
+}
+.-selected-{
+    color: #fffffa!important;
+    background: #dc3545!important;
+}
+.-focus-{
+    color: #fffffa!important;
+    background: #dc3545!important;
+}
 .info:hover{
     margin-left: 10px;
     border-radius: 4px;
@@ -256,7 +269,17 @@ active .link-red:hover{
 .tab-btn-dis span:hover{
     background: #eeeeee;
 }
-
+.folder-hover{
+    color: #000;
+    padding: 5px;
+}
 .folder-hover:hover{
-    background: #ebebeb;
+    background: #f9f9f9;
+}
+
+.folder-hover:first-child{
+    border-radius: 5px 0 0 5px;
+}
+.folder-hover:last-child{
+    border-radius: 0 5px 5px 0;
 }

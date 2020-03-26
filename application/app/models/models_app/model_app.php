@@ -129,6 +129,24 @@
         }
         return $response;
     }
+    function get_director_brand($id){
+        $pdo = get_pdo();
+        $stm = $pdo->prepare('SELECT brand FROM director WHERE id = :id');
+        $stm->bindValue(':id', $id);
+        if($stm->execute()){
+            $data = $stm->fetch();
+            if(empty($data)){
+                $response = ['error' => true, 'status' => 'fetch error'];
+            }
+            else{
+                $response = ['error' => false, 'status' => 'success','data' => $data['brand']];
+            }
+        }
+        else{
+            $response = ['error' => true, 'status' => 'execute error'];
+        }
+        return $response;
+    }
     function get_director_status($id){
         $pdo = get_pdo();
         $stm = $pdo->prepare('SELECT status FROM users WHERE id = :id');

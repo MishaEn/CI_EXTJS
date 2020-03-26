@@ -37,6 +37,69 @@ function get_status_title(){
     Отгружен: 	        заказ отгружен с фабрики
         ';
 }
+function formate_month($month){
+    $name = 'Январь';
+    switch($month){
+        case 1:
+            $name = 'Январь';
+            break;
+        case 2:
+            $name = 'Февраль';
+            break;
+        case 3:
+            $name = 'Март';
+            break;
+        case 4:
+            $name = 'Апрель';
+            break;
+        case 5:
+            $name = 'Май';
+            break;
+        case 6:
+            $name = 'Июнь';
+            break;
+        case 7:
+            $name = 'Июль';
+            break;
+        case 8:
+            $name = 'Август';
+            break;
+        case 9:
+            $name = 'Сентябрь';
+            break;
+        case 10:
+            $name = 'Октябрь';
+            break;
+        case 11:
+            $name = 'Ноябрь';
+            break;
+        case 12:
+            $name = 'Деакбрь';
+            break;
+    }
+    return $name;
+}
+function get_option_month(){
+    $month = date('m');
+    var_dump(substr($month, 1, 1));
+    $selected = '';
+    for($i=1; $i<=12; $i++){
+        if($i == substr($month, 1, 1)){
+            $selected = 'selected';
+        }
+        else{
+            $selected = '';
+        }
+        if($i < 10){
+            $value = '0'.$i;
+
+        }
+        else{
+            $value = $i;
+        }
+        echo '<option '.$selected.' value="'.$value.'">'.formate_month($i).'</option>';
+    }
+}
 
 ?>
 <div class="submodule order" data-status="active" data-submoudle-appliaction = "order">
@@ -73,18 +136,25 @@ function get_status_title(){
                     </div>
                 <?php else:?>
                     <div class="col-12">
-                        <!--<div class="row">
+                        <div class="row">
                             <div class="col-12">
                                 <button data-type="refresh-order">Обновить</button>
                             </div>
-                        </div>-->
+                        </div>
                         <div class="row">
-                            <div class="col-2 text-right">
+                            <div class="col-1 text-right">
                                 <select class="form-control" name="year" id="year">
                                     <option value="2020">2020</option>
                                     <option value="2019">2019</option>
                                     <option value="2018">2018</option>
                                     <option value="2017">2017</option>
+                                </select>
+                            </div>
+                            <div class="col-1 text-right">
+                                <select class="form-control" name="year" id="month">
+                                    <?php
+                                        get_option_month();
+                                    ?>
                                 </select>
                             </div>
                             <div class="col-2 text-right">
@@ -137,15 +207,17 @@ function get_status_title(){
                                     $id_list = $id_list.','.$item['order_id'];
                                     ?>
                                     <tr data-show="true" data-type="order" class="show">
-                                        <td class="text-center" style="border: 1px solid #dee2e6; overflow-x: scroll"><?php echo $item['n_order_se'];?><input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
+                                        <td class="text-center" style="border: 1px solid #dee2e6"><?php echo $item['n_order_se'];?><input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
                                         <td class="text-center" style="border: 1px solid #dee2e6"><?php echo $item['n_order_ne'];?><input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
-                                        <td class="text-center" style="border: 1px solid #dee2e6"><?php echo $item['n_date_con'];?><input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
+                                        <td class="text-center" style="border: 1px solid #dee2e6"><?php echo humanity_date($item['n_date_con']);?><input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
                                         <td class="text-center" <?php if(in_array($_SESSION['user']['role_id'], $_SESSION['app']['role_policy']['order']['update'])){echo 'data-type="change-status-order"';}?>  style="font-weight: 700; border: 1px solid #dee2e6; color: #fff!important; background: <?php echo status_translate($item['n_status'])['color'];?>"><?php echo status_translate($item['n_status'])['text'];?> <input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
-                                        <td class="text-center" style="border: 1px solid #dee2e6"><?php echo $item['n_week'];?><input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
+
                                         <?php if($item['n_mount'] !== '0000-00-00'):?>
-                                        <td class="text-center" style="border: 1px solid #dee2e6"><?php echo $item['n_mount'];?><input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
+                                            <td class="text-center" data-id="<?php echo $item['order_id'];?>" style="cursor: pointer; border: 1px solid #dee2e6"<?php if(in_array($_SESSION['user']['role_id'], $_SESSION['app']['role_policy']['order']['update'])){echo 'data-type="change-week-order"';}?>><?php echo $item['n_week'];?><input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
+                                            <td class="text-center" data-id="<?php echo $item['order_id'];?>" style="cursor: pointer; border: 1px solid #dee2e6"<?php if(in_array($_SESSION['user']['role_id'], $_SESSION['app']['role_policy']['order']['update'])){echo 'data-type="change-date-order"';}?>><?php echo humanity_date($item['n_mount']);?><input type="text" data-type="change-date-order" value="<?php echo $item['order_id'];?>" style="visibility: hidden; position: absolute"></td>
                                         <?php else:?>
-                                            <td class="text-center" style="border: 1px solid #dee2e6"> - <input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
+                                            <td class="text-center" data-id="<?php echo $item['order_id'];?>" style="cursor: pointer; border: 1px solid #dee2e6"<?php if(in_array($_SESSION['user']['role_id'], $_SESSION['app']['role_policy']['order']['update'])){echo 'data-type="change-week-order"';}?>> - <input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
+                                            <td class="text-center" data-id="<?php echo $item['order_id'];?>" style="cursor: pointer; border: 1px solid #dee2e6"<?php if(in_array($_SESSION['user']['role_id'], $_SESSION['app']['role_policy']['order']['update'])){echo 'data-type="change-date-order"';}?>> - <input type="text" data-type="change-date-order" value="<?php echo $item['order_id'];?>" style="visibility: hidden; position: absolute"><div class="trtigger"></div></td>
                                         <?php endif;?>
                                         <td class="text-center" style="border: 1px solid #dee2e6;"><i style="color: #DC3545; font-size: 1.3rem; cursor: pointer" data-type="specification" data-order="<?php echo $item['n_order_ne'];?>" class="fas file-loader fa-file-pdf"></i><input type="text" value="<?php echo $item['n_code_ord'];?>" hidden></td>
                                         <td class="text-center" style="border: 1px solid #dee2e6"><span data-modal = "director" data-action="get_director_by_user_id_modal" data-data="<?= $item['n_code_ord']?>" class="pseudo-link"><?php echo $item['n_code_ord'];?></span><span> / </span><span data-modal = "director" data-action="get_director_by_user_id_modal" data-data="<?= $item['n_code_ord']?>" class="pseudo-link"><?= $item['code']?></span><input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
@@ -176,34 +248,121 @@ function get_status_title(){
                         url:'/order/get_all_order',
                         method: 'post',
                         dataType: 'html',
-                        data: {list: $('input[data-type="id-list"]').val(), year: 2020},
                         success: function (data) {
                             $('tbody').append(data);
                         }
                     });
+                    function add_new_order(id_list){
+                        let list = '';
+                        $.each(id_list, function (key, item) {
+                            if(key === 0){
+                                list += item.order_id
+                            }
+                            else{
+                                list += ', '+item.order_id;
+                            }
+                        });
+                        $.ajax({
+                            url: '/order/get_new_order',
+                            method: 'post',
+                            dataType: 'html',
+                            data: {list: list},
+                            success: function (data) {
+                                console.log(list)
+                                $('table tbody').prepend(data);
+                            }
+                        });
+                    }
+                    function update_order(data){
 
+                    }
+                    setInterval(function () {
+                        $.ajax({
+                            url: '/order/update_table',
+                            method: 'post',
+                            dataType: 'json',
+                            success: function (data) {
+                                if(!data.error){
+                                    switch (data.status) {
+                                        case 'new order success and update order success':
+                                            add_new_order(data.data.new_order);
+                                            update_order(data.data);
+                                            break;
+                                        case 'new order error and update order success':
+                                            update_order(data.data);
+                                            break;
+                                        case 'new order success and update order error':
+                                            add_new_order(data.data.new_order);
+                                            break;
+                                    }
+                                }
+                            }
+                        })
+                    }, 1000*60);
                     $('#year').change(function (e) {
                         let year = $(e.target).val();
+                        let month = $('#month').val();
                         $.ajax({
                             url:'/order/get_all_order',
                             method: 'post',
                             dataType: 'html',
-                            data: {list: $('input[data-type="id-list"]').val(), year: year},
+                            data: {year: year, month: month},
                             success: function (data) {
-                                $('tbody tr').remove();
-                                $('tbody').append(data);
-                                $('tbody tr').each(function (key, item) {
-                                    if(key<9){
-                                        $(item).show()
-                                    }
-                                    else{
-                                        return
-                                    }
-                                })
+                                if(data === ''){
+                                    $('table').hide();
+                                    $('h1[data-type="empty-table"]').remove();
+                                    $('.card-body').append('<h1 data-type="empty-table">За выбранный период не найдено ниодного заказа</h1>')
+                                }
+                                else{
+                                    $('table').show();
+                                    $('h1[data-type="empty-table"]').remove();
+                                    $('tbody tr').remove();
+                                    $('tbody').append(data);
+                                    $('tbody tr').each(function (key, item) {
+                                        if(key<9){
+                                            $(item).show()
+                                        }
+                                        else{
+                                            return
+                                        }
+                                    })
+                                }
+
 
                             }
                         });
-                    })
+                    });
+                    $('#month').change(function (e) {
+                        let month = $(e.target).val();
+                        let year = $('#year').val();
+                        $.ajax({
+                            url:'/order/get_all_order',
+                            method: 'post',
+                            dataType: 'html',
+                            data: {year: year, month: month},
+                            success: function (data) {
+                                if(data === ''){
+                                    $('table').hide();
+                                    $('h1[data-type="empty-table"]').remove();
+                                    $('.card-body').append('<h1 data-type="empty-table">За выбранный период не найдено ниодного заказа</h1>')
+                                }
+                                else{
+                                    $('table').show();
+                                    $('h1[data-type="empty-table"]').remove();
+                                    $('tbody tr').remove();
+                                    $('tbody').append(data);
+                                    $('tbody tr').each(function (key, item) {
+                                        if(key<9){
+                                            $(item).show()
+                                        }
+                                        else{
+                                            return
+                                        }
+                                    })
+                                }
+                            }
+                        });
+                    });
 
                     let row_list = $('.card-body table tbody tr');
                     let row_count = row_list.length;
@@ -613,7 +772,117 @@ function get_status_title(){
                             }
                         }
                     })
-                })
+                });
+                $(document).on('dblclick', 'td[data-type="change-week-order"]', function (e) {});
+                $(document).on('click', 'td[data-type="change-date-order"]', function (e) {
+                    let start_date = '';
+                    let id = $(e.target).attr('data-id');
+                    if($(e.target).text().trim() !== '-'){
+                        start_date = $(e.target).text().trim();
+                    }
+                    let input = $(e.target).children()[0];
+                    let date_picker = $(input).datepicker({
+                        minDate: new Date(),
+                        dateFormat: 'yyyy-mm-dd',
+                        onSelect: function (fd, d, i) {
+                            let date = fd.split('-');
+                            if(date[1].substr(0,1) === '0'){
+                                date[1] = date[1].substr(1,1)
+                            }
+                            if(date[2].substr(0,1) === '0'){
+                                date[2] = date[2].substr(1,1)
+                            }
+                            switch (date[1]) {
+                                case '1':
+                                    date[1] = 'января';
+                                    break;
+                                case '2':
+                                    date[1] = 'февраля';
+                                    break;
+                                case '3':
+                                    date[1] = 'марта';
+                                    break;
+                                case '4':
+                                    date[1] = 'апреля';
+                                    break;
+                                case '5':
+                                    date[1] = 'мая';
+                                    break;
+                                case '6':
+                                    date[1] = 'июня';
+                                    break;
+                                case '7':
+                                    date[1] = 'июля';
+                                    break;
+                                case '8':
+                                    date[1] = 'августа';
+                                    break;
+                                case '9':
+                                    date[1] = 'сентября';
+                                    break;
+                                case '10':
+                                    date[1] = 'октября';
+                                    break;
+                                case '11':
+                                    date[1] = 'ноября';
+                                    break;
+                                case '12':
+                                    date[1] = 'декабря';
+                                    break;
+                            };
+                            $(e.target).prev().replaceWith('<input data-id="'+id+'" data-type="date-first-change" data-date="'+fd+'" placeholder="Неделя" style="width: '+$(e.target).innerWidth()/2+'px; height:'+$(e.target).innerHeight()+'px; border: none">');
+                            $(e.target).text(date[2]+' '+date[1]+' '+date[0]+' г.');
+                            $(e.target).append('<input type="text" data-type="change-date-order" value="'+id+'" style="visibility: hidden; position: absolute">');
+
+
+                            i.hide();
+                            $('.datepicker').remove();
+                        }
+                    });
+                    $(input).focus();
+                });
+
+                $(document).on('focusout', 'input[data-type="date-first-change"]', function (e) {
+                    let id = $(e.target).attr('data-id');
+                    let date = $(e.target).attr('data-date');
+                    let week = $(e.target).val().trim();
+                    if(week !== '' && week !== '0'){
+                        $(e.target).replaceWith('<td class="text-center" data-id="'+id+'" style="cursor: pointer; border: 1px solid #dee2e6" data-type="change-week-order">'+week+'<input type="text" value=""+id+"" hidden></td>');
+                        console.log(id+ ' ' +date+' '+week)
+                        $.ajax({
+                            url:'/order/update_shipping_order',
+                            method: 'post',
+                            dataType: 'json',
+                            data: {id: id, date: date, week: week},
+                            success: function (data) {
+                                if(!data.error){
+                                    Swal.fire({
+                                        toast: true,
+                                        timer: 10000,
+                                        html: '<span style="color: #fff; font-weight: 700">Дата отгрузки и неделя изменены</span>',
+                                        background: '#dc3545',
+                                        position: 'top-end',
+                                        showConfirmButton: false
+                                    });
+                                }
+                            }
+                        });
+                    }
+
+                });
+                $('.card-body').on('scroll',  function (e) {
+                    //console.log();
+                    let scroll = $(e.target).scrollTop();
+                    let input_list = $('input[data-type="change-date-order"]');
+                    let datepicker_list = $('.datepicker')
+                    $.each(input_list, function (key, item) {
+                        let top = $(item).css('top');
+                        let position = $($(item).parent()).offset().top - 200
+                        $(item).css({
+                            top: position
+                        })
+                    });
+                });
             </script>
         </div>
     </div>

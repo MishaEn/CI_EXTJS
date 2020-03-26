@@ -10,24 +10,26 @@
                 "verify_peer_name"=>false,
             ),
         );
-        if(file_exists(ROOTPUBLIC.'/pdf/orders/'.$_POST['file'].'.pdf')){
-            header('Content-Disposition: attachment; filename=' . basename('спецификация_'.$_POST['file'].'.pdf'));
-            if($_SESSION['user']['role_id'] == 2){
-
-                if($_SESSION['user']['id'] == $parse_file_name[0]){
-                    $response = ['error' => false, 'status' => 'success', 'data' => chunk_split(base64_encode(file_get_contents(ROOTPUBLIC.'/pdf/orders/'.$_POST['file'].'.pdf')))];
-                }
-                else{
-                    $response = ['error' => true, 'status' => 'access denied'];
-                }
+        header('Content-Disposition: attachment; filename=' . basename('спецификация_'.$_POST['file'].'.pdf'));
+        if($_SESSION['user']['role_id'] == 2){
+            if($_SESSION['user']['id'] == $parse_file_name[0]){
+                $response = ['error' => false, 'status' => 'success', 'data' => chunk_split(base64_encode(file_get_contents('https://193.111.3.246:5001/MyWeb/LK/zakazi/'.$_POST['file'].'.pdf', false, stream_context_create($arrContextOptions))))];
             }
             else{
-
-                $response = ['error' => false, 'status' => 'success', 'data' => chunk_split(base64_encode(file_get_contents('https://193.111.3.246:5001/MyWeb/LK/zakazi/'.$_POST['file'].'.pdf', false, stream_context_create($arrContextOptions))))];
+                $response = ['error' => true, 'status' => 'access denied'];
             }
         }
         else{
-            $response = ['error' => true, 'status' => 'file exist error'];
+            $url = 'https://193.111.3.246:5001/MyWeb/LK/zakazi/'.$_POST['file'].'.pdf';
+            $Headers = @get_headers($url);
+            var_dump($Headers);
+            if(strpos('200', $Headers[0])) {
+                $response = ['error' => false, 'status' => 'success', 'data' => chunk_split(base64_encode(file_get_contents('https://193.111.3.246:5001/MyWeb/LK/zakazi/'.$_POST['file'].'.pdf', false, stream_context_create($arrContextOptions))))];
+            } else {
+                $response = ['error' => true];
+            }
+
+
         }
         echo json_encode($response) ;
     }

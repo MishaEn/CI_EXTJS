@@ -12,11 +12,14 @@
         require_once ROOTKERNEL . '/app_kernel/controller.php';
         require_once ROOTKERNEL . '/app_kernel/model.php';
         require_once ROOTKERNEL . '/app_kernel/view.php';
+
+
     }
      /*TODO:Инициаизация конфигурации*/
     function init_config(){
         require_once ROOTKERNEL.'/config/router.php';
         require_once ROOTKERNEL.'/config/PDO.php';
+        require_once ROOTKERNEL.'/config/FTP.php';
     }
     /*TODO:Сборка помошников*/
     function build_kernel_helpers(){

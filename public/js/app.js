@@ -138,6 +138,7 @@ function update_table_row(e, id, html, color, url){
 
 
 /*----------------*/
+
 $(document).ready(function () {
     let row_list = $('.card-body table tbody tr');
     let row_count = row_list.length;
@@ -595,3 +596,6 @@ $(document).ready(function () {
 function modal_link_handler() {
 
 }
+
+
+

@@ -1,5 +1,6 @@
 <?php
     function action_index(){
+        var_dump(translit('АМО'));
         $data = get_director();
         if(in_array($_SESSION['user']['role_id'], $_SESSION['app']['role_policy']['director']['read'])){
             submodule_loader('director', null, $data);
@@ -32,6 +33,7 @@
         element_loader('update_director', 'director', $data['data']);
     }
     function action_activate_director(){
+
         echo json_encode(activate_director($_POST));
     }
     function action_deactivate_director(){

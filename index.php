@@ -1,4 +1,6 @@
 <?php
+
+    require_once __DIR__.'/vendor/autoload.php';
     function pretty_print($in,$opened = false){
         if($opened)
             $opened = ' open';
@@ -54,17 +56,19 @@
 
 
     define('ROOTDIR', __DIR__.'/application');
+    define('ROOT', __DIR__);
     define('ROOTCONFIG', __DIR__.'/application/config');
     define('ROOTCONTROLLERS', __DIR__.'/application/app/controllers');
     define('ROOTKERNEL', __DIR__ . '/application/kernel');
     define('ROOTMODELS', __DIR__.'/application/app/models');
     define('ROOTVIEWS', __DIR__.'/application/app/views');
     define('ROOTPUBLIC', __DIR__.'/public');
-    /*$ip = ['127.1.1.1', '92.38.11.252', '178.76.229.90', '193.111.3.246'];
+    $ip = ['127.1.1.1', '92.38.11.252', '178.76.229.90', '193.111.3.246'];
     if(!in_array($_SERVER['REMOTE_ADDR'], $ip)){
         header('Location: http://dedal-service.ru');
-    }*/
+    }
 
 
 
     include_once ROOTDIR.'/bootstrap.php';
+

@@ -5,6 +5,3 @@
         $_SESSION['app']['template_name'] = 'application';
         template_loader('application', ['user' => $user_data]);
     }
-    function action_post_json(){
-        echo json_encode(['error' => false, 'status' => 'success']);
-    }

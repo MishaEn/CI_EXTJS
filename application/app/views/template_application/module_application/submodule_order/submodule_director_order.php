@@ -37,6 +37,69 @@ function get_status_title(){
     Отгружен: 	        заказ отгружен с фабрики
         ';
 }
+function formate_month($month){
+    $name = 'Январь';
+    switch($month){
+        case 1:
+            $name = 'Январь';
+            break;
+        case 2:
+            $name = 'Февраль';
+            break;
+        case 3:
+            $name = 'Март';
+            break;
+        case 4:
+            $name = 'Апрель';
+            break;
+        case 5:
+            $name = 'Май';
+            break;
+        case 6:
+            $name = 'Июнь';
+            break;
+        case 7:
+            $name = 'Июль';
+            break;
+        case 8:
+            $name = 'Август';
+            break;
+        case 9:
+            $name = 'Сентябрь';
+            break;
+        case 10:
+            $name = 'Октябрь';
+            break;
+        case 11:
+            $name = 'Ноябрь';
+            break;
+        case 12:
+            $name = 'Деакбрь';
+            break;
+    }
+    return $name;
+}
+function get_option_month(){
+    $month = date('m');
+    var_dump(substr($month, 1, 1));
+    $selected = '';
+    for($i=1; $i<=12; $i++){
+        if($i == substr($month, 1, 1)){
+            $selected = 'selected';
+        }
+        else{
+            $selected = '';
+        }
+        if($i < 10){
+            $value = '0'.$i;
+
+        }
+        else{
+            $value = $i;
+        }
+        echo '<option '.$selected.' value="'.$value.'">'.formate_month($i).'</option>';
+    }
+}
 ?>
 <div class="submodule order" data-status="active" data-submoudle-appliaction = "order">
     <div class="row">
@@ -72,12 +135,19 @@ function get_status_title(){
                 <?php else:?>
                     <div class="col-12">
                         <div class="row">
-                            <div class="col-2 text-right">
+                            <div class="col-1 text-right">
                                 <select class="form-control" name="year" id="year">
                                     <option value="2020">2020</option>
                                     <option value="2019">2019</option>
                                     <option value="2018">2018</option>
                                     <option value="2017">2017</option>
+                                </select>
+                            </div>
+                            <div class="col-1 text-right">
+                                <select class="form-control" name="year" id="month">
+                                    <?php
+                                    get_option_month();
+                                    ?>
                                 </select>
                             </div>
                             <div class="col-2 text-right">
@@ -109,7 +179,7 @@ function get_status_title(){
                         <table class="table table-borderless table-hover">
                             <thead>
                             <tr style="font-size: 0.9em;">
-                                <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>№ заказа отправителя</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="№ заказа отправителя" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
+                                <th class="" style="width: 150px; border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>№ заказа отправителя</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="№ заказа отправителя" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
                                 <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>№ заказа 3cad</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="№ заказа 3cad" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
                                 <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-11"><span>Дата принятия</span></div><div class="col-1 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="Дата принятия" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
                                 <th class="" style="border: 1px solid #dee2e6"><div class="row"><div class="col-4"><span>Статус</span></div><div class="col-1"><i style="color: #dc3545" title="<?php echo get_status_title();?>" class="fas fa-question-circle"></i></div><div class="col-1 offset-6 text-right"><i style="color: #2d2e2c; font-size: 16px; cursor: pointer" data-type="Статус" class="fa fa-times  sort-button"></i><input type="text" value="" hidden></div></div></th>
@@ -125,10 +195,15 @@ function get_status_title(){
                                     <tr class="show text-center">
                                         <td class="text-center" style="border: 1px solid #dee2e6"><?php echo $item['n_order_se'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
                                         <td class="text-center" style="border: 1px solid #dee2e6"><?php echo $item['n_order_ne'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
-                                        <td class="text-center" style="border: 1px solid #dee2e6"><?php echo $item['n_date_con'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
+                                        <td class="text-center" style="border: 1px solid #dee2e6"><?php echo humanity_date($item['n_date_con']);?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
                                         <td class="text-center" style="font-weight: 700; border: 1px solid #dee2e6; color: #fff!important; background: <?php echo status_translate($item['n_status'])['color'];?>"><?php echo status_translate($item['n_status'])['text'];?> <input type="text" value="<?php echo $item['id'];?>" hidden></td>
-                                        <td class="text-center" style="border: 1px solid #dee2e6"><?php echo $item['n_week'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
-                                        <td class="text-center" style="border: 1px solid #dee2e6"><?php echo $item['n_mount'];?><input type="text" value="<?php echo $item['id'];?>" hidden></td>
+                                        <?php if($item['n_mount'] !== '0000-00-00'):?>
+                                            <td class="text-center" style="border: 1px solid #dee2e6"><?php echo $item['n_week'];?><input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
+                                            <td class="text-center" style="border: 1px solid #dee2e6"><?php echo humanity_date($item['n_mount']);?><input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
+                                        <?php else:?>
+                                            <td class="text-center" style="border: 1px solid #dee2e6"> - <input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
+                                            <td class="text-center" style="border: 1px solid #dee2e6"> - <input type="text" value="<?php echo $item['order_id'];?>" hidden></td>
+                                        <?php endif;?>
                                         <td class="text-center" style="border: 1px solid #dee2e6;"><i style="color: #DC3545; font-size: 1.3rem; cursor: pointer" data-type="specification" data-order="<?php echo $item['n_order_ne'];?>" class="fas file-loader fa-file-pdf"></i><input type="text" value="<?php echo $item['n_code_ord'];?>" hidden></td>
                                         <td hidden>
                                             <input type="text" value="<?php echo $item['id'];?>" hidden>
