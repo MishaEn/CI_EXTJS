@@ -296,6 +296,22 @@ Ext.define('Swan.view.Books', {
 					data: Ext.encode()
 				},
 				success: function(response, opts) {
+					let xml = response.responseText;
+
+					Ext.create('Ext.window.Window', {
+						title: 'Удалить книгу',
+						height: 500,
+						width: 800,
+						layout: 'fit',
+						items:{
+							xtype     : 'textareafield',
+							grow      : true,
+							name      : 'xml',
+							fieldLabel: 'XML',
+							anchor    : '100%',
+							value: xml
+						}
+					}).show();
 
 				},
 				failure: function() {
