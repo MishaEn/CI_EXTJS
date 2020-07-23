@@ -4,7 +4,6 @@
     <list default="true" id="e8f52d68-162e-4892-b3fb-64c05ab2b53a" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/done.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jscore/view/Books.js" beforeDir="false" afterPath="$PROJECT_DIR$/jscore/view/Books.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +109,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1595492890981</updated>
-      <workItem from="1595492892438" duration="17221000" />
+      <workItem from="1595492892438" duration="17475000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1595509304185</created>
@@ -119,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595509304185</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update">
+      <created>1595510431836</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1595510431836</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,10 +145,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1181" y="42" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595494112581" />
-    <state x="534" y="115" key="CommitChangelistDialog2" timestamp="1595509286041">
+    <state x="534" y="115" key="CommitChangelistDialog2" timestamp="1595510430850">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="534" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595509286041" />
+    <state x="534" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595510430850" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1595509555569">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -171,10 +177,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="444" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595502446929" />
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1595509364223">
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1595510437247">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595509364223" />
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595510437247" />
     <state x="846" y="411" width="326" height="234" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1595494619745">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

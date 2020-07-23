@@ -74,7 +74,6 @@ Ext.define('Swan.view.Books', {
 								Ext.Ajax.request({
 									method: 'POST',
 									url: 'index.php/Book/addBook',
-									headers: { 'Content-Type': 'application/json' },
 									params  : {
 										data: Ext.encode(form.getValues())
 									},
@@ -175,7 +174,6 @@ Ext.define('Swan.view.Books', {
 								Ext.Ajax.request({
 									method: 'POST',
 									url: 'index.php/Book/updateBook',
-									headers: { 'Content-Type': 'application/json' },
 									params  : {
 										data: Ext.encode(form.getValues())
 									},
@@ -255,7 +253,6 @@ Ext.define('Swan.view.Books', {
 								Ext.Ajax.request({
 									method: 'POST',
 									url: 'index.php/Book/removeBook',
-									headers: { 'Content-Type': 'application/json' },
 									params  : {
 										data: Ext.encode(form.getValues())
 									},
