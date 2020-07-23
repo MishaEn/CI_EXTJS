@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="cl279370_admpnl@bitrix312.timeweb.ru" uuid="320491bd-41d4-450c-af1b-58e9b729ba1a">
+    <data-source source="LOCAL" name="mit@localhost" uuid="69401d44-b3e2-4924-ae87-547e6a0fb45e">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://bitrix312.timeweb.ru:3306/cl279370_admpnl</jdbc-url>
-      <driver-properties>
-        <property name="serverTimezone" value="UTC" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="cl279370_nwdedal@bitrix312.timeweb.ru" uuid="4f93206c-f6ba-43a3-8bba-051d3c00d499">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://bitrix312.timeweb.ru:3306/cl279370_nwdedal</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/mit</jdbc-url>
       <driver-properties>
         <property name="serverTimezone" value="UTC" />
       </driver-properties>

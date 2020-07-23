@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="cl279370_admpnl@bitrix312.timeweb.ru" uuid="320491bd-41d4-450c-af1b-58e9b729ba1a">
-      <database-info product="MySQL" version="5.6.39-83.1" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.6.39" exact-driver-version="8.0">
+    <data-source name="mit@localhost" uuid="69401d44-b3e2-4924-ae87-547e6a0fb45e">
+      <database-info product="MySQL" version="5.5.5-10.4.10-MariaDB" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.21 (Revision: 33f65445a1bcc544eb0120491926484da168f199)" dbms="MARIADB" exact-version="10.4.10" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
-      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
-      <user-name>cl279370_admpnl</user-name>
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="schema" qname="@" />
-        </introspection-scope>
-      </schema-mapping>
-    </data-source>
-    <data-source name="cl279370_nwdedal@bitrix312.timeweb.ru" uuid="4f93206c-f6ba-43a3-8bba-051d3c00d499">
-      <database-info product="MySQL" version="5.6.39-83.1" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.6.39" exact-driver-version="8.0">
-        <extra-name-characters>#@</extra-name-characters>
-        <identifier-quote-string>`</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>cl279370_nwdedal</user-name>
+      <user-name>dev_user</user-name>
       <schema-mapping>
         <introspection-scope>
           <node kind="schema" qname="@" />
